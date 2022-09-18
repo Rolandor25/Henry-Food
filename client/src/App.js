@@ -16,7 +16,7 @@ function App() {
       <Route exact path={'/'} component={IniButon}/>
       <Route path={'/recipes'} component={Nav}/>  
       <Route exact path={'/recipes'} component={RecipeList}/> 
-      <Route exact path={'/recipe/:id'} component={RecipeDetail}/>
+      <Route exact path={'/recipes/:id'} component={RecipeDetail}/>
       <Route exact path={'/recipes/create'} component={CreateRecipe}/> 
     </React.Fragment>
   );

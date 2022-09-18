@@ -75,7 +75,16 @@ module.exports = {
           }
       }
       })
-      return findrecipe
+
+      //CONSTRUYO ARREGLO MODIFICADO CORRIGIENDA ARREGLO DE DIETAS
+      var findrecipex
+      let lista=[]
+      for (let h = 0; h < findrecipe.diets.length; h++) {
+        lista.push(findrecipe.dataValues.diets[h].dataValues.name);
+      }
+      findrecipex=({id:findrecipe.id,name:findrecipe.name,hs:findrecipe.hs,image:findrecipe.image,diet:lista,steps:findrecipe.steps,resume:findrecipe.resume})
+
+      return findrecipex
 
       // SI EL ID ES DE LA API  
     }else{
