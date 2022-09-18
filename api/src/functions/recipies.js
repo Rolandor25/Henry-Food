@@ -11,6 +11,7 @@ module.exports = {
 
   listrecipes: async function () {
     //DATA DE API
+  
     // const apiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=5`);
     // const apiinfo = apiUrl.data.results.map(e => { 
     //   return {
@@ -21,10 +22,10 @@ module.exports = {
     //     image: e.image,
     //   }
     // })
-    const apiinfo=[]
+
+    const apiinfo =[]
 
     //DATA DDE DB
-
     const dbinfo= await Recipe.findAll({
       //INCLUYO LA LISTA DE DIETAS ASOCIADAS A LA RECETA
       attributes:['id','name','hs','image'],
@@ -36,6 +37,7 @@ module.exports = {
         }
       }
     })
+    
     //CONSTRUYO ARREGLO MODIFICADO CORRIGIENDA ARREGLO DE DIETAS
     var dbinfox=[]
     for (let kk = 0; kk < dbinfo.length; kk++) {
@@ -46,19 +48,6 @@ module.exports = {
       dbinfox.push({id:dbinfo[kk].id,name:dbinfo[kk].name,hs:dbinfo[kk].hs,image:dbinfo[kk].image,diet:lista})
     }
     
-    // *************************************************************************************************
-    // RUTINA DE EDICION DE ARREGLO DE DIETAS POR RECETA < GENERA ERROR INSTANCE.GET>
-    // *************************************************************************************************
-    // const dbinfox=dbinfo;
-    // for (let h = 0; h < dbinfox.length; h++) {
-    //   if(dbinfo[h].diets.length>0){
-    //     for (let hh = 0; hh < dbinfox[h].diets.length; hh++) {
-    //       dbinfo[h].dataValues.diets.splice(hh,1,dbinfox[h].dataValues.diets[hh].dataValues.name)
-    //     }
-    //   }  
-    // };
-    // **************************************************************************************************
-
     //CONCATENO AMBOS ARREGLOS PARA OBTENER UNA LISTA CON TODAS LAS RECETAS
     var allrecipes
     if (dbinfox) {
