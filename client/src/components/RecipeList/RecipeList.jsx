@@ -3,16 +3,13 @@ import { useEffect } from 'react';
 import { connect, useDispatch } from "react-redux";
 import RecipeCard from "../RecipeCard/RecipeCard";
 import { getRecipeList } from '../../redux/actions/index'
+
 let prevId = 1
-
 export function ListRecipe({allrecipes}){
-
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(getRecipeList())
     }, [dispatch]);
-
     return(
         <div>
             {
@@ -21,20 +18,17 @@ export function ListRecipe({allrecipes}){
                     <br/>
                 </div>)
             }
-        </div>
+        </div> 
     )
 }
-
 function mapStateToProps(state){
     return{
         allrecipes: state.allrecipes
     }
 }
-
 function mapDispatchToProps(dispatch){
     return{
       getList: dispatch(getRecipeList())
     }
   }
-
 export default connect(mapStateToProps,mapDispatchToProps)(ListRecipe)

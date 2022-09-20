@@ -11,7 +11,7 @@ export default function RecipeCard({id,image,name,hs,diet}){
   }
   return(
     <div>
-      <div><img src={imgtoshow} alt="" height={200} width={200}/></div>
+      <div><img src={imgtoshow} alt="" height={200} width={250}/></div>
       <Link to={`/recipes/${id}`}> {name} </Link>
       <div>Heath Score: {hs}</div>
       <div> Dietas:

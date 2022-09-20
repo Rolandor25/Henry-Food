@@ -1,67 +1,51 @@
 import React from "react";
 import { useEffect } from 'react';
-import { connect } from "react-redux";
+import { useSelector ,useDispatch } from "react-redux";
 import { getRecipeDetail } from '../../redux/actions/index'
 
-export function RecipeDetail(props){
-  
+export default function RecipeDetail(props){
+  let dispatch=useDispatch()
   let id_detail= props.match.params.id
   let imgtoshow=""
-  let Det_Id=0
+  let dietstring=""
   let Step_Id=0
-
   useEffect(() => {
-    props.GetDeatil(id_detail)
-  }, [props,id_detail]);
+    dispatch(getRecipeDetail(id_detail))
+}, [dispatch, id_detail]);
 
-  if (!props.detail.image) {
+const FullRecipe = useSelector(state => state.detail);
+  if (!FullRecipe.image) {
     imgtoshow="https://t3.ftcdn.net/jpg/04/41/73/28/240_F_441732816_Eo3fHdX3oImKtXdkYkktCrR1mbwAT9I6.jpg"
   }else{
-    imgtoshow=props.detail.image
+    imgtoshow=FullRecipe.image
   }
-
+  if (FullRecipe.diet) {
+    let tempdiet=FullRecipe.diet
+    dietstring=tempdiet.join(', ')
+  }else{
+    dietstring=FullRecipe.diet
+  }
   return(
     <div>
       {
-        props.detail ? (<div>
+        FullRecipe ? (<div>
           <div><img src={imgtoshow} alt="" height={400} width={400}/></div>
-          <div>{props.detail.name}</div>
-          <div>Resumen: {props.detail.resume}</div>
-          <div>Heatlth Score: {props.detail.hs}</div>
+          <div>{FullRecipe.name}</div>
+          <div>Resumen: {FullRecipe.resume}</div>
+          <div>Heatlth Score: {FullRecipe.hs}</div>
           <div>Steps: 
            {
-              props.detail.steps?.map(e => {
+              FullRecipe.steps?.map(e => {
                 return (
                   <h5 className="Steps" key={Step_Id++}>{e}</h5>
                 )
               })
             }    
           </div>
-         <br/>
-          <div> Diets:
-            {
-              props.detail.diet?.map(e => {
-                return (
-                  <h5 className="diets" key={Det_Id++}>{e}</h5>
-                )
-              })
-            }             
-          </div>
+          <br/>
+          <div> Diets: {dietstring}</div>
         </div>):null
       }
     </div>
   )
 }
-
-function mapStateToProps(state){
-  return{
-    detail: state.detail,
-  }
-}
-
-function mapDispatchToProps(dispatch){
-  return{
-    GetDeatil: id=>dispatch(getRecipeDetail(id))
-  }
-}
-export default connect(mapStateToProps,mapDispatchToProps)(RecipeDetail)

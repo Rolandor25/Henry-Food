@@ -1,0 +1,84 @@
+#Button {
+	box-shadow: 0px 1px 0px 0px #fce2c1;
+	background:linear-gradient(to bottom, #ffc477 5%, #fb9e25 100%);
+	background-color:#ffc477;
+	border-radius:22px;
+	border:1px solid #eeb44f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:19px;
+	font-weight:bold;
+	padding:15px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #cc9f52;
+    width: 250px;
+}
+#buttonconteiner {
+    padding-left: 17pt;
+    justify-content: center;
+}
+#Button:hover {
+	background:linear-gradient(to bottom, #fb9e25, #ffc477);
+	background-color:#fb9e25;
+}
+#Button:active {
+	position:relative;
+	top:1px;
+}
+#inibox{
+    background-image: linear-gradient(to top, rgb(255, 255, 255,0.40), rgba(168, 118, 84, 0.95)) ;
+}
+#box {
+    float: right;
+    width: 20%;
+    padding: 5px;
+}
+#clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#tittlefont {
+    font-family: "AR BERKLEY", cursive, sans-serif;
+    font-size: 55px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-align: center;
+}
+#introfont {
+    font-family: "Calibri", Palatino, serif;
+    font-size: 25px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    padding-left: 8pt;
+    padding-right: 8pt;
+}
+#intro_contfont {
+    font-family: "Calibri", Palatino, serif;
+    font-size: 30px;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #000000;
+    font-weight: 700;
+    text-decoration: none;
+    font-style: italic;
+    font-variant: normal;
+    text-transform: none;
+    text-align: justify;
+    padding-left: 8pt;
+    padding-right: 8pt;
+}

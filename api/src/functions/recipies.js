@@ -1,4 +1,3 @@
-'use strict'
 const axios = require("axios");
 const { Diet, Recipe } = require("../db");
 const { API_KEY } = process.env;
@@ -94,13 +93,16 @@ module.exports = {
         image: apiUrl.data.image,
         name: apiUrl.data.title,
         diet: apiUrl.data.diets,
-        summary: apiUrl.data.summary,
+        resume: apiUrl.data.summary,
         healthScore: apiUrl.data.healthScore,
         steps: apiUrl.data.analyzedInstructions[0]?.steps.map(e => {
-          return {
-            number: e.number,
-            step: e.step
-          }
+          return (
+            e.step
+          )         
+          // return {
+          //   number: e.number,
+          //   step: e.step
+          // }
         })
       }    
       return findrecipe
