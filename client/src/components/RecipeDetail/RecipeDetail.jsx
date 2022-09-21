@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from 'react';
 import { useSelector ,useDispatch } from "react-redux";
 import { getRecipeDetail } from '../../redux/actions/index'
+import '../../layout.css'
 
 export default function RecipeDetail(props){
   let dispatch=useDispatch()
@@ -25,27 +26,52 @@ const FullRecipe = useSelector(state => state.detail);
   }else{
     dietstring=FullRecipe.diet
   }
+
   return(
-    <div>
-      {
-        FullRecipe ? (<div>
-          <div><img src={imgtoshow} alt="" height={400} width={400}/></div>
-          <div>{FullRecipe.name}</div>
-          <div>Resumen: {FullRecipe.resume}</div>
-          <div>Heatlth Score: {FullRecipe.hs}</div>
-          <div>Steps: 
-           {
-              FullRecipe.steps?.map(e => {
-                return (
-                  <h5 className="Steps" key={Step_Id++}>{e}</h5>
-                )
-              })
-            }    
-          </div>
-          <br/>
-          <div> Diets: {dietstring}</div>
-        </div>):null
-      }
-    </div>
+    <div class="container">
+      <main class="container__main">
+        {/*<!-- Left sidebar -->*/}
+        <aside class="container__left"></aside>
+
+        {/*<!-- Main content -->*/}
+        <article></article>
+          <div class="container__middle_h">
+              {
+                FullRecipe ? (
+                  <div class="content_card">
+                    <h1>{FullRecipe.name}</h1>
+
+                    <div class='container__colLft'>
+                      <div><img src={imgtoshow} alt="" height={400} width={400}/></div>
+                      <div><strong>Health Score: </strong>{FullRecipe.hs} </div>
+                      <h4> Diets Recomended:</h4>
+                       <div> {dietstring}</div>
+                    </div>
+                    
+                    <div class='container__colRgt'>
+                      <div>{FullRecipe.resume}</div>
+                      <br/>
+                      <div><strong>Steps to Preper:</strong></div>
+                      <ol>
+                        {
+                          FullRecipe.steps?.map(e => {
+                            return (
+                              <li className="Steps" key={Step_Id++}>{e}</li>
+                            )
+                          })
+                        }    
+                      </ol>
+                    </div>
+                  </div>):null
+              }
+          </div> 
+        { /*<!-- Right sidebar -->*/}
+
+        <aside class="container__right"></aside>
+      </main>
+      <footer>
+        <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>
+      </footer>
+  </div> 
   )
 }

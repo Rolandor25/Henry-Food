@@ -16,7 +16,6 @@ export function ListRecipe({allrecipes}){
 
     //RENDERIZO MARCO CONTENEDOR DE LAS CARDS DE LAS RECETAS
     return(
-
         <div class="container">
             <header>
                 {/* <div class='container__headerimage'>.<img width="500" height="300"></img></div> */}
@@ -42,7 +41,7 @@ export function ListRecipe({allrecipes}){
                 <aside class="container__right"></aside>
             </main>
             <footer>
-                ...
+                <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>
             </footer>
         </div> 
     )
