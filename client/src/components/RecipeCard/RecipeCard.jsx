@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-let prevId = 1;
+import '../../layout.css'
+//let prevId = 1;
 var imgtoshow=""
 
 export default function RecipeCard({id,image,name,hs,diet}){
@@ -10,19 +11,22 @@ export default function RecipeCard({id,image,name,hs,diet}){
     imgtoshow=image
   }
   return(
-    <div>
-      <div><img src={imgtoshow} alt="" height={200} width={250}/></div>
-      <Link to={`/recipes/${id}`}> {name} </Link>
-      <div>Heath Score: {hs}</div>
-      <div> Dietas:
-        {
-          diet?.map(d => {
-            return (
-              <h6 key={prevId++}>{d}</h6>
-            )
-          })
-        }  
-      </div>
+    <div > 
+      <div class="content_card">
+        <div><img src={imgtoshow} alt="" height={200} width={250}/></div>
+        <Link to={`/recipes/${id}`}> <h3>{name}</h3> </Link>
+        <div><strong>Heath Score: </strong>{hs}</div>
+        <div><strong>Diets Recomensation:</strong></div>
+        <div> {diet.toString()}
+          {/* {
+            diet?.map(d => {
+              return (
+                <div key={prevId++}><strong>{d}</strong></div>
+              )
+            })
+          }   */}
+        </div>
+      </div>    
     </div>
   )
 }

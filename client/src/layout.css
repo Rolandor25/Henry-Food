@@ -1,0 +1,66 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container__main {
+    /* Take the remaining height */
+    flex-grow: 1;
+
+    /* Layout the left sidebar, main content and right sidebar */
+    display: flex;
+    flex-direction: row;
+}
+
+.container__left {
+    width: 10%;
+}
+
+.container__middle {
+    /* Take the remaining width */
+    flex-grow: 1;
+    background: rgb(255, 255, 255,0.70);
+    top: 50%;
+    left: 50%;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    display: grid;
+    justify-items: stretch;
+    align-items: stretch;
+    column-gap: 20px;
+    row-gap: 5px;
+}
+
+.container__right {
+    width: 10%;
+}
+
+.content_card {
+    color: #242424;
+    background-color: rgb(255, 255, 255,0.80);
+    font-weight: 600;
+    text-align: center;
+    box-sizing: border-box;
+    height: 100%;
+    padding:10px;
+}
+
+/* <div class="container">
+    <header>
+        ...
+    </header>
+    <main class="container__main">
+        <!-- Left sidebar -->
+        <aside class="container__left">...</aside>
+
+        <!-- Main content -->
+        <article class="container__middle">...</article>
+
+        <!-- Right sidebar -->
+        <nav class="container__right">...</nav>
+    </main>
+    <footer>
+        ...
+    </footer>
+</div> */
