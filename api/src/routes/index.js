@@ -16,9 +16,9 @@ router.get('/recipes', async (req,res,next)=>{
     if (name) {
         try {
             //traigo la lista de recets de la api y la db
-            let allRecipes = await RoutesFunctions.listrecipes() 
+            let AllRecipes = await RoutesFunctions.listrecipes() 
             // filtro los resultados por el texto de nombre de recete ingresado
-            let filterrecipes= allRecipes.filter(r => r.name.toLowerCase().includes(name.toString().toLowerCase()));
+            let filterrecipes= AllRecipes.filter(r => r.name.toLowerCase().includes(name.toString().toLowerCase()));
             //valido que existan coincidenciias de la busqueda y defino campos a mostrar
             if (filterrecipes.length) {
                 let recipes = filterrecipes.map(e => {

@@ -1,3 +1,52 @@
+.header{
+    background-image: url(./banne.png);
+	height: 210px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment:scroll;   
+    background-size:cover;
+}
+
+.filters {
+    font-weight: 500;    
+    padding-left:  10px;
+    padding-right:  10px;
+    justify-content:center;
+    align-items: center;
+    padding: 8px 25px;
+}
+
+.select {
+    background: rgb(255, 255, 255,0.75);
+    height: fit-content;
+    display:flex;
+    flex-direction: row;
+    justify-content:center;
+    font-style: italic;
+    align-items: center;
+    padding: 8px 25px;
+    font-weight: 700;
+}
+
+.refreshButton {
+    color: rgb(5, 0, 0);
+    background-color: #FCCC5D;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 25px;
+    margin: 5px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color:#7c4324; 
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.refreshButton:hover {
+    color:#ffffff;
+    background-color: rgb(96, 136, 146);
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -6,7 +55,7 @@
 .container__main {
     /* Take the remaining height */
     flex-grow: 1;
-
+    margin-block-start: 20px;
     /* Layout the left sidebar, main content and right sidebar */
     display: flex;
     flex-direction: row;
@@ -79,21 +128,48 @@
     text-align: left;
   } 
 
+  .container__middle_f {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+    justify-items:stretch;
+    align-items: stretch;
+    padding: 20px; 
+    background-color: rgb(255, 255, 255,0.70);
+    top: 50%;
+    left: 50%;
+}
+
+.container_tittleform{
+    font-family: "AR BERKLEY", cursive, sans-serif;
+}
+
+.container_input[type="text"] {
+    width: 400px;
+}
+
+.container_inputstp{
+    width: 320px;
+}
+
+.container_inputnum[type="number"] {
+    width: 400px;
+}
   .container__colLft{ float:left;  }
   .container__colRgt{ float:right; } 
-/* <div class="container">
+/* <div className="container">
     <header>
         ...
     </header>
-    <main class="container__main">
+    <main className="container__main">
         <!-- Left sidebar -->
-        <aside class="container__left">...</aside>
+        <aside className="container__left">...</aside>
 
         <!-- Main content -->
-        <article class="container__middle">...</article>
+        <article className="container__middle">...</article>
 
         <!-- Right sidebar -->
-        <nav class="container__right">...</nav>
+        <nav className="container__right">...</nav>
     </main>
     <footer>
         ...

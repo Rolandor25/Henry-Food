@@ -25,7 +25,7 @@ export default function IniButon() {
                         <br/>
                         <div id='introfont'>Share your recipes or find the one you are looking for to try something new!</div>
                         <br/>
-                        <div id='intro_contfont'><strong>Share - Search - Cook</strong></div>
+                        <div id='intro_contfont'><strong>Search - Cook - Share</strong></div>
                         <br/>     
                         <Link id='buttonconteiner' to='/recipes'>
                             <button id='Button'>Lets Go!</button>

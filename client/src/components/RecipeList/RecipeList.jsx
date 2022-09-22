@@ -1,12 +1,31 @@
 import React from "react";
-import { useEffect } from 'react';
-import { connect, useDispatch } from "react-redux";
+import { useState, useEffect } from 'react';
+import { connect, useDispatch , useSelector} from "react-redux";
 import RecipeCard from "../RecipeCard/RecipeCard";
-import { getRecipeList } from '../../redux/actions/index'
 import '../../layout.css'
+import Paged from '../Paged/Paged';
+import SearchBar from '../SearchBar/SearchBar';
 
-let prevId = 1
-export function ListRecipe({allrecipes}){
+import { getRecipeList , dietTypeFilter, aplhabeticalSort, scoreSort } from '../../redux/actions';
+import { Link } from 'react-router-dom'
+
+
+export function ListRecipe(){
+
+    let prevId = 1
+    const AllRecipes = useSelector((state) => state.Recipes);
+    const [order, setOrder] = useState('')
+    const [page, setPage] = useState(1);
+    const [recipesPage, setRecipesPage] = useState(9);
+    
+    const quantityRecipesPage = page * recipesPage;
+    const firstRecipePage = quantityRecipesPage - recipesPage;
+    const showRecipesPage = AllRecipes.slice(firstRecipePage, quantityRecipesPage);
+    
+    const paged = function(pageNumber) {
+        setPage(pageNumber)
+    };
+
     const dispatch = useDispatch();
 
     //DESPACHO LA ACCION DE BUSCAR TODAS LAS RECETS
@@ -14,31 +33,93 @@ export function ListRecipe({allrecipes}){
         dispatch(getRecipeList())
     }, [dispatch]);
 
+    function handleClick(e) {
+        e.preventDefault();
+        dispatch(getRecipeList());
+        setPage(1);
+    }
+
+    function handleDietTypeFilter(e) {
+        e.preventDefault();
+        dispatch(dietTypeFilter(e.target.value))
+        setPage(1);
+    }
+
+    function handleAlphabeticalSort(e) {
+        e.preventDefault();                
+        dispatch(aplhabeticalSort(e.target.value))
+        setPage(1);
+        setOrder(`Order ${e.target.value}`);
+    }
+    
+    function handleScoreSort(e) {
+        e.preventDefault();                
+        dispatch(scoreSort(e.target.value));
+        setPage(1);
+        setOrder(`Order ${e.target.value}`);
+    }    
+
     //RENDERIZO MARCO CONTENEDOR DE LAS CARDS DE LAS RECETAS
     return(
-        <div class="container">
-            <header>
-                {/* <div class='container__headerimage'>.<img width="500" height="300"></img></div> */}
+        <div className="container">
+
+            <header className='header'>
             </header>
-            <main class="container__main">
+
+            <div className="select">
+                <label className="filters"><strong>Sort:</strong></label>
+                <select className="select" name="alphabetical" onChange={e => handleAlphabeticalSort(e)}>
+                    <option disabled selected>Alphabetical</option>
+                    <option value="atoz">A to Z</option>
+                    <option value="ztoa">Z to A</option>
+                </select>
+                <select className="select" name="numerical" onChange={e => handleScoreSort(e)}>
+                    <option disabled selected>Score</option>
+                    <option value="asc">From Min to Max</option>
+                    <option value="desc">From Max to Min</option>
+                </select>
+                <label className="filters"><strong>Diet Types:</strong></label>
+                <select className="select" name="diets" onChange={e => handleDietTypeFilter(e)}>
+                    <option disabled selected>Select...</option>
+                    <option value="dairy free">Dairy Free</option>
+                    <option value="gluten free">Gluten Free</option>
+                    <option value="ketogenic">Keto</option>
+                    <option value="lacto ovo vegetarian">Lacto-Ovo-Vegetarian</option>
+                    <option value="lacto vegetarian">Lacto-Vegetarian</option>
+                    <option value="low fodmap">Low FODMAP</option>
+                    <option value="ovo vegetarian">Ovo-Vegetarian</option>
+                    <option value="paleolithic">Paleo</option>
+                    <option value="pescetarian">Pescetarian</option>
+                    <option value="primal">Primal</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="whole 30">Whole30</option>
+                </select>
+                <button className="refreshButton" onClick={handleClick}>Refresh</button>
+
+                <SearchBar/>
+
+            </div>
+
+            <main className="container__main">
                 {/*<!-- Left sidebar -->*/}
-                <aside class="container__left"></aside>
+                <aside className="container__left"></aside>
 
                 {/*<!-- Main content -->*/}
                 <article></article>
-                    <divc class="container__middle">
+                    <div className="container__middle">
                         {
                             //VALIDO QUE EXISTAN RECCETAS QUE MOSTRAR Y MAPEO EL ARREGLO RESULTANTE
-                            allrecipes && allrecipes.map(r=><div key={prevId ++}>
+                            AllRecipes && AllRecipes.map(r=><div key={prevId ++}>
                                 {/* LLAMO ALCOMPONENTE QUE RENDERIZA LAS CARDS DE LAS RECETAS */}
                                 <RecipeCard key={r.id} id={r.id} image={r.image} name={r.name} diet={r.diet} hs={r.hs} />
                                 <br/>
                             </div>)
                         }
-                    </divc> 
+                    </div> 
 
                 { /*<!-- Right sidebar -->*/}
-                <aside class="container__right"></aside>
+                <aside className="container__right"></aside>
             </main>
             <footer>
                 <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>
@@ -49,7 +130,7 @@ export function ListRecipe({allrecipes}){
 
 function mapStateToProps(state){
     return{
-        allrecipes: state.allrecipes
+        AllRecipes: state.AllRecipes
     }
 }
 

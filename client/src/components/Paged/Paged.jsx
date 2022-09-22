@@ -1,11 +1,11 @@
 import React from "react";
 import './paged.css';
 
-export default function Paged({recipesPage, allRecipes, paged}) {
+export default function Paged({recipesPage, AllRecipes, paged}) {
     
     const pages = [];
         
-    for (let i = 1; i <= Math.ceil(allRecipes/recipesPage); i++) {
+    for (let i = 1; i <= Math.ceil(AllRecipes/recipesPage); i++) {
         pages.push(i)
     };    
       

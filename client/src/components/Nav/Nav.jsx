@@ -5,8 +5,6 @@ import {NavLink} from 'react-router-dom'
 export default function Nav(){
     return (
         <React.Fragment>
-            <header id='header'>
-            </header>
             <nav id='menu'>
                 <ul>
                     <li><NavLink to={'/recipes'}>Home</NavLink></li>

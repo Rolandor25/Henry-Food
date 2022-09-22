@@ -28,27 +28,31 @@ const FullRecipe = useSelector(state => state.detail);
   }
 
   return(
-    <div class="container">
-      <main class="container__main">
+    <div className="container">
+
+      <header className='header'>
+      </header>      
+      
+      <main className="container__main">
         {/*<!-- Left sidebar -->*/}
-        <aside class="container__left"></aside>
+        <aside className="container__left"></aside>
 
         {/*<!-- Main content -->*/}
         <article></article>
-          <div class="container__middle_h">
+          <div className="container__middle_h">
               {
                 FullRecipe ? (
-                  <div class="content_card">
+                  <div className="content_card">
                     <h1>{FullRecipe.name}</h1>
 
-                    <div class='container__colLft'>
+                    <div className='container__colLft'>
                       <div><img src={imgtoshow} alt="" height={400} width={400}/></div>
                       <div><strong>Health Score: </strong>{FullRecipe.hs} </div>
                       <h4> Diets Recomended:</h4>
                        <div> {dietstring}</div>
                     </div>
                     
-                    <div class='container__colRgt'>
+                    <div className='container__colRgt'>
                       <div>{FullRecipe.resume}</div>
                       <br/>
                       <div><strong>Steps to Preper:</strong></div>
@@ -67,7 +71,7 @@ const FullRecipe = useSelector(state => state.detail);
           </div> 
         { /*<!-- Right sidebar -->*/}
 
-        <aside class="container__right"></aside>
+        <aside className="container__right"></aside>
       </main>
       <footer>
         <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>

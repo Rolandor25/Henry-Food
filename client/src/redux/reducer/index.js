@@ -1,11 +1,11 @@
 //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
 // REDUCER
 //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
-let index=1
 const initialState={
-    recipex:[], //Recetas creadas
-    allrecipes: [],
-    diettypes: [],
+    RecipeX:[], //Recetas creadas
+    Recipes:[],
+    AllRecipes: [],
+    dietTypes: [],
     detail:{}
 }
 export default function rootReducer(state=initialState,action){
@@ -13,7 +13,8 @@ export default function rootReducer(state=initialState,action){
         case 'RECIPE_LIST':
             return{
                 ...state,
-                allrecipes:action.payload
+                Recipes: action.payload,
+                AllRecipes: action.payload
             }          
         case 'RECIPE_DETAIL':
             return{
@@ -23,9 +24,65 @@ export default function rootReducer(state=initialState,action){
         case 'CREATE_RECIPE':
             return {
                 ...state,
-                recipex: [...state.recipex,{...action.payload,id:index++}]
             }
+        //**********************************************    
+        case 'DIET_TYPE_FILTER':
+          const All_Recipes = state.AllRecipes;    
+          console.log(All_Recipes.diets)      
+          const DietFilter = All_Recipes.filter(r => r.diets?.some(d => d.toLowerCase() === action.payload.toLowerCase()))           
+          return {
+            ...state,
+            recipes: DietFilter
+          };
 
+          case 'ALPHABETICAL_SORT':   
+          let RecipesSort = [...state.AllRecipes]       
+          RecipesSort = action.payload === 'atoz' ?
+          state.AllRecipes.sort(function(a, b) {
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            return 0;
+          }) :
+          state.AllRecipes.sort(function(a, b) {
+            if (a.name.toLowerCase() < b.name.toLowerCase()) return 1;
+            if (a.name.toLowerCase() > b.name.toLowerCase()) return -1;
+            return 0;
+          });          
+          return {
+            ...state,
+            recipes: RecipesSort
+          };
+
+        case 'HS_SORT':
+          let RecipesSortByHS = [...state.AllRecipes] 
+          RecipesSortByHS = action.payload === 'asc' ?
+          state.AllRecipes.sort(function(a, b) {
+            if (a.hs > b.hs) return 1;
+            if (a.hs < b.hs) return -1;
+            return 0;
+          }) :
+          state.AllRecipes.sort(function(a, b) {
+            if (a.hs < b.hs) return 1;
+            if (a.hs > b.hs) return -1;
+            return 0;
+          });
+          return {
+            ...state,
+            recipes: RecipesSortByHS
+          };
+
+        case 'SEARCH_RECIPE':
+          return {
+            ...state,
+            recipes: action.payload
+          };    
+          
+        case 'GET_DIET':
+          return {
+            ...state,
+            dietTypes: action.payload
+        }          
+        //**********************************************   
         default:
             return {...state};
     }

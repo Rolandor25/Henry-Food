@@ -48,13 +48,13 @@ module.exports = {
     }
     
     //CONCATENO AMBOS ARREGLOS PARA OBTENER UNA LISTA CON TODAS LAS RECETAS
-    var allrecipes
+    var AllRecipes
     if (dbinfox) {
-      allrecipes = apiinfo.concat(dbinfox)
+      AllRecipes = apiinfo.concat(dbinfox)
     } else {
-      allrecipes = apiinfo
+      AllRecipes = apiinfo
     }
-    return allrecipes
+    return AllRecipes
   },   
 
   //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
@@ -76,14 +76,14 @@ module.exports = {
       })
 
       //CONSTRUYO ARREGLO MODIFICADO CORRIGIENDA ARREGLO DE DIETAS
-      var findrecipex
+      var findRecipeX
       let lista=[]
       for (let h = 0; h < findrecipe.diets.length; h++) {
         lista.push(findrecipe.dataValues.diets[h].dataValues.name);
       }
-      findrecipex=({id:findrecipe.id,name:findrecipe.name,hs:findrecipe.hs,image:findrecipe.image,diet:lista,steps:findrecipe.steps,resume:findrecipe.resume})
+      findRecipeX=({id:findrecipe.id,name:findrecipe.name,hs:findrecipe.hs,image:findrecipe.image,diet:lista,steps:findrecipe.steps,resume:findrecipe.resume})
 
-      return findrecipex
+      return findRecipeX
 
       // SI EL ID ES DE LA API  
     }else{

@@ -47,15 +47,6 @@
 	margin-left: 20px;
 }
 
-#header{
-    background-image: url(./banne.png);
-	height: 210px;
-    background-repeat: no-repeat;
-    background-position: center top;
-    background-attachment: fixed;   
-    background-size:contain;
-}
-
 @media screen and (max-width: 800px){
 	#menu {position:absolute}
 	#menu ul {background:#111;position:center;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
