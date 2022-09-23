@@ -7,7 +7,6 @@ import Paged from '../Paged/Paged';
 import SearchBar from '../SearchBar/SearchBar';
 
 import { getRecipeList , dietTypeFilter, aplhabeticalSort, scoreSort } from '../../redux/actions';
-import { Link } from 'react-router-dom'
 
 
 export function ListRecipe(){
@@ -101,6 +100,7 @@ export function ListRecipe(){
 
             </div>
 
+
             <main className="container__main">
                 {/*<!-- Left sidebar -->*/}
                 <aside className="container__left"></aside>
@@ -110,7 +110,7 @@ export function ListRecipe(){
                     <div className="container__middle">
                         {
                             //VALIDO QUE EXISTAN RECCETAS QUE MOSTRAR Y MAPEO EL ARREGLO RESULTANTE
-                            AllRecipes && AllRecipes.map(r=><div key={prevId ++}>
+                            showRecipesPage  && showRecipesPage .map(r=><div key={prevId ++}>
                                 {/* LLAMO ALCOMPONENTE QUE RENDERIZA LAS CARDS DE LAS RECETAS */}
                                 <RecipeCard key={r.id} id={r.id} image={r.image} name={r.name} diet={r.diet} hs={r.hs} />
                                 <br/>
@@ -121,6 +121,7 @@ export function ListRecipe(){
                 { /*<!-- Right sidebar -->*/}
                 <aside className="container__right"></aside>
             </main>
+            <Paged recipesPage={recipesPage} AllRecipes={AllRecipes.length} paged={paged}/>
             <footer>
                 <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>
             </footer>

@@ -41,7 +41,7 @@ export function dietTypeFilter(payload) {
 
 export function aplhabeticalSort(payload) {
     return {
-        type: 'ALPHABETICAL_SORT',
+        type: 'SORTBYNAME',
         payload
     }
 };

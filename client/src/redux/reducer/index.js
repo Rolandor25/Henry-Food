@@ -25,17 +25,18 @@ export default function rootReducer(state=initialState,action){
             return {
                 ...state,
             }
-        //**********************************************    
+          //**********************************************    
         case 'DIET_TYPE_FILTER':
-          const All_Recipes = state.AllRecipes;    
-          console.log(All_Recipes.diets)      
-          const DietFilter = All_Recipes.filter(r => r.diets?.some(d => d.toLowerCase() === action.payload.toLowerCase()))           
+          const All_Recipes = state.AllRecipes;     
+          console.log(All_Recipes)  
+          const DietFilter = All_Recipes.filter(r => r.diet?.some(d => d.toLowerCase() === action.payload.toLowerCase()))   
+          console.log(DietFilter)          
           return {
             ...state,
-            recipes: DietFilter
+            Recipes: DietFilter
           };
 
-          case 'ALPHABETICAL_SORT':   
+        case 'SORTBYNAME':   
           let RecipesSort = [...state.AllRecipes]       
           RecipesSort = action.payload === 'atoz' ?
           state.AllRecipes.sort(function(a, b) {
@@ -50,7 +51,7 @@ export default function rootReducer(state=initialState,action){
           });          
           return {
             ...state,
-            recipes: RecipesSort
+            Recipes: RecipesSort
           };
 
         case 'HS_SORT':
@@ -68,13 +69,13 @@ export default function rootReducer(state=initialState,action){
           });
           return {
             ...state,
-            recipes: RecipesSortByHS
+            Recipes: RecipesSortByHS
           };
 
         case 'SEARCH_RECIPE':
           return {
             ...state,
-            recipes: action.payload
+            Recipes: action.payload
           };    
           
         case 'GET_DIET':

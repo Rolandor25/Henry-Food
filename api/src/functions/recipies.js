@@ -11,7 +11,7 @@ module.exports = {
   listrecipes: async function () {
     //DATA DE API
   
-    // const apiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=5`);
+    // const apiUrl =  await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`);
     // const apiinfo = apiUrl.data.results.map(e => { 
     //   return {
     //     id: e.id,

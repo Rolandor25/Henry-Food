@@ -4,19 +4,15 @@ import './paged.css';
 export default function Paged({recipesPage, AllRecipes, paged}) {
     
     const pages = [];
-        
     for (let i = 1; i <= Math.ceil(AllRecipes/recipesPage); i++) {
         pages.push(i)
     };    
       
     return(
-        
         <div>
-            
-            {pages.length <= 1 ? 
-            <></> :
-            <nav className="pagination">
-                
+            {
+                pages.length <= 1 ? 
+                <></> :
                 <ul className="pages">
                     {pages?.map(p =>(
                         <li className="page" key={p}>
@@ -24,10 +20,7 @@ export default function Paged({recipesPage, AllRecipes, paged}) {
                         </li>
                     ))}
                 </ul>
-    
-            </nav>
             }  
-
         </div>
     )
 };
