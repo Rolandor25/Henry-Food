@@ -115,7 +115,7 @@
     padding: 10px;
     background-color:none; 
     text-align: justify;
-  } 
+} 
 
 .container__colRgt{ 
     width: 60%; 
@@ -126,9 +126,9 @@
     column-gap: 0px;
     background-color:none; 
     text-align: left;
-  } 
+} 
 
-  .container__middle_f {
+.container__middle_f {
     display: flex;
     justify-content: space-around;
     flex-grow: 1;
@@ -142,6 +142,8 @@
 
 .container_tittleform{
     font-family: "AR BERKLEY", cursive, sans-serif;
+    font-weight: 700;
+    font-size:xx-large;
 }
 
 .container_input[type="text"] {

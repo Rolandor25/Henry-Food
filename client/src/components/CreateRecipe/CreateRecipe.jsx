@@ -21,7 +21,7 @@ export default function CreateRecipe(){
     // SETEO ESTADOS INIIALES DE COMPONENTES DEL FORMULARIO
     let[input,setInput]=React.useState({name:'',resume:'',hs:'',steps:'',image:'',diets:''});
     let[checked, setChecked] = React.useState([]);
-    const checkList  = ['gluten free', 'ketogenic', 'vegetarian', 'lacto vegetarian','ovo vegetarian', 'lacto ovo vegetarian', 'vegan', 'pescetarian', 'paleolithic', 'primal', 'low fodmap', 'whole 30', 'dairy free']; 
+    const checkList  = ['dairy free' , 'gluten free' , 'ketogenic' , 'lacto ovo vegetarian' , 'lacto vegetarian' , 'low fodmap' , 'ovo vegetarian' , 'paleolithic' , 'pescetarian' , 'primal' , 'vegan' , 'vegetarian' , 'whole 30']; 
 
     //MANEJADOR DE EVENTOS DE CAMBIO EN CAMPOS IMPUTS
     let handleChange=(event)=>{
@@ -71,8 +71,8 @@ export default function CreateRecipe(){
                     
                     <React.Fragment>
                         <form onSubmit={event=>handlesubmit(event)}>
-                            <h1 align="center"> CREATE RECIPE</h1> 
-                            <h2 className='container_tittleform' align="center">Share Your Recipes And Bee Part of Recipedia Community</h2> 
+                            <h1 className='container_tittleform' align="center">Share Your Recipes And Bee Part of Recipedia Community</h1> 
+                            <h2 align="center"> CREATE RECIPE</h2> 
                             <br/>
 
                             <table id="table1" cellSpacing="5px" cellPadding="5%" align="center"> 
