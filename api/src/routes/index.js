@@ -68,7 +68,6 @@ router.get('/recipes/:id', async (req,res,next)=>{
 // Crea una receta en la base de datos relacionada con sus tipos de dietas.
 //POST /recipes:
 router.post('/recipes/', async (req,res,next)=>{
-    console.log(req.body)
     try {
         const { name,resume,hs,steps,image,diets }=req.body
         res.status(200).json(await RoutesFunctions.createrecipe(name,resume,hs,steps,image,diets));
