@@ -4,6 +4,9 @@
 	height: 50px;
 	padding-left: 18px;
 	border-radius: 0px;
+
+	z-index: 10000;
+	top: 0px;
 }
 #menu ul, #menu li {
 	margin: 0 auto;
@@ -48,7 +51,7 @@
 }
 
 @media screen and (max-width: 800px){
-	#menu {position:absolute}
+	#menu {position:sticky}
 	#menu ul {background:#111;position:center;top:100%;right:0;left:0;z-index:3;height:auto;display:none}
 	#menu li {display:block;float:none;width:auto;}
 	#menu input {z-index:4}

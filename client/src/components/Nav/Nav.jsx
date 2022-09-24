@@ -9,7 +9,7 @@ export default function Nav(){
                 <ul>
                     <li><NavLink to={'/recipes'}>Home</NavLink></li>
                     <li><NavLink to={'/recipe/create'}>Create Recipe</NavLink></li>
-                    <li><NavLink to={'/diets'}>Diets Info</NavLink></li>
+                    <li><NavLink to={'/dietinfo'}>Diets Info</NavLink></li>
                 </ul>
             </nav>
         </React.Fragment>

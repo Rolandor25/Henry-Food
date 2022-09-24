@@ -150,13 +150,17 @@
     width: 400px;
 }
 
-.container_inputstp{
-    width: 320px;
-}
-
 .container_inputnum[type="number"] {
     width: 400px;
 }
+
+.errors {
+    font-family: sans-serif;    
+    color: #e52214;
+    font-size: 12px;
+    font-weight: 600;
+}
+
   .container__colLft{ float:left;  }
   .container__colRgt{ float:right; } 
 /* <div className="container">

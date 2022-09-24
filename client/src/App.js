@@ -17,11 +17,11 @@ function App() {
       <Route exact path={'/'} component={IniButon}/>
       <Route path={'/recipes'} component={Nav}/>  
       <Route path={'/recipe'} component={Nav}/>  
-      <Route path={'/diets'} component={Nav}/>  
+      <Route path={'/dietinfo'} component={Nav}/>  
       <Route exact path={'/recipes'} component={RecipeList}/> 
       <Route exact path={'/recipe/create'} component={CreateRecipe}/> 
       <Route exact path={'/recipes/:id'} component={RecipeDetail}/>
-      <Route exact path={'/diets'} component={DietsReference}/> 
+      <Route exact path={'/dietinfo'} component={DietsReference}/> 
     </React.Fragment>
   );
 }

@@ -13,9 +13,9 @@ export function ListRecipe(){
 
     let prevId = 1
     const AllRecipes = useSelector((state) => state.Recipes);
-    const [order, setOrder] = useState('')
+    const [setOrder] = useState('')
     const [page, setPage] = useState(1);
-    const [recipesPage, setRecipesPage] = useState(9);
+    const [recipesPage] = useState(9);
     
     const quantityRecipesPage = page * recipesPage;
     const firstRecipePage = quantityRecipesPage - recipesPage;
@@ -68,18 +68,18 @@ export function ListRecipe(){
             <div className="select">
                 <label className="filters"><strong>Sort:</strong></label>
                 <select className="select" name="alphabetical" onChange={e => handleAlphabeticalSort(e)}>
-                    <option disabled selected>Alphabetical</option>
+                    <option defaultValue={'Alphabetical'}></option>
                     <option value="atoz">A to Z</option>
                     <option value="ztoa">Z to A</option>
                 </select>
                 <select className="select" name="numerical" onChange={e => handleScoreSort(e)}>
-                    <option disabled selected>Score</option>
+                    <option defaultValue={'Score'}></option>
                     <option value="asc">From Min to Max</option>
                     <option value="desc">From Max to Min</option>
                 </select>
                 <label className="filters"><strong>Diet Types:</strong></label>
                 <select className="select" name="diets" onChange={e => handleDietTypeFilter(e)}>
-                    <option disabled selected>Select...</option>
+                    <option defaultValue={'Select...'}></option>
                     <option value="dairy free">Dairy Free</option>
                     <option value="gluten free">Gluten Free</option>
                     <option value="ketogenic">Keto</option>
@@ -110,7 +110,7 @@ export function ListRecipe(){
                     <div className="container__middle">
                         {
                             //VALIDO QUE EXISTAN RECCETAS QUE MOSTRAR Y MAPEO EL ARREGLO RESULTANTE
-                            showRecipesPage  && showRecipesPage .map(r=><div key={prevId ++}>
+                            showRecipesPage  && showRecipesPage.map(r=><div key={prevId ++}>
                                 {/* LLAMO ALCOMPONENTE QUE RENDERIZA LAS CARDS DE LAS RECETAS */}
                                 <RecipeCard key={r.id} id={r.id} image={r.image} name={r.name} diet={r.diet} hs={r.hs} />
                                 <br/>
