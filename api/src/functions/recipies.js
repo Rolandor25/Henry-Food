@@ -114,6 +114,7 @@ module.exports = {
   //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
 
   createrecipe: async function (name,resume,hs,steps,image,diets) {
+    console.log('values > ' + name,resume,hs,steps,image,diets)
     //CREO LA RECETA EN LA DB
     const newrecipe= await Recipe.create({
       name:name,
@@ -129,10 +130,11 @@ module.exports = {
           name: diets[k]
         }
       })
-      newrecipe.addDiet(dietofrecipe.dataValues.id)
+      newrecipe.addDiet(dietofrecipe.id)
     }
     return (newrecipe)
   }, 
+
 
   //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
   // SE GENERA LISTA DE TIPOS DE DIETA PARA FILTROS Y CREACION DE DIETAS
