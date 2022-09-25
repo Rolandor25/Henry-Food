@@ -174,8 +174,8 @@ export default function CreateRecipe(){
                                 {/* BOTONES DEL FORMULARIO */}
                                 <tr>
                                     <td align="right" className="title"><strong>Form Options:</strong></td>
-                                    <td><input type={'submit'}  value={'Create'}/>                                                             
-                                    <input type={'reset'}  value={'Reset'} onChange={handlereset}/></td>                          
+                                    <td><input type={'submit'} className='refreshButton' value={'Create'}/>                                                             
+                                    <input type={'reset'} className='refreshButton' value={'Reset'} onChange={handlereset}/></td>                          
                                 </tr> 
                             </table>
                         </form>

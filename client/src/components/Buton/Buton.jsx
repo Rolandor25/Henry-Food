@@ -8,6 +8,7 @@ export default function IniButon() {
         <div id="clearfix">
             <div id="box">
             <p></p>
+            <p></p>
             </div>
 
             <div id="box">
@@ -17,9 +18,10 @@ export default function IniButon() {
                 <br/>
                 <br/>
                 <br/>
-                <br/>                                             
-                <div id="inibox">
-                    <div > 
+                <br/>   
+                <br/>
+                <div >
+                    <div id="inibox"> 
                         <div id='tittlefont'>Recipedia!</div>
                         <br/>
                         <div id='introfont'>Share your recipes or find the one you are looking for to try something new!</div>

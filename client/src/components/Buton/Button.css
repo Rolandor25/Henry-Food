@@ -28,7 +28,9 @@
 	top:1px;
 }
 #inibox{
-    background-image: linear-gradient(to top, rgb(255, 255, 255,0.40), rgba(168, 118, 84, 0.95)) ;
+    background-image: linear-gradient(to top, rgb(255, 255, 255,0.40), rgba(96, 136, 146, 0.95)) ;
+    width: 300px;
+    padding: 20px;
 }
 #box {
     float: right;
@@ -36,6 +38,8 @@
     padding: 5px;
 }
 #clearfix::after {
+    display: flex;
+    flex-direction: column;
     content: "";
     clear: both;
     display: table;
