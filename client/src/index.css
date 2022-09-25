@@ -1,7 +1,8 @@
 body {
   margin: 0;
   background-image: url(./imgs/fondo_landing.jpg);
-  background-size: 100% 100%;
+  /* background: rgb(240, 230, 216); */
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center top;
   background-attachment: fixed;

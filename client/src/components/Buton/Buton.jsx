@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function IniButon() {
     return(
-        <React.Fragment>
-
+        <React.Fragment>  
         <div id="clearfix">
             <div id="box">
             <p></p>

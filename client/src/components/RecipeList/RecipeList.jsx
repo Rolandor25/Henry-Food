@@ -13,7 +13,7 @@ export function ListRecipe(){
 
     let prevId = 1
     const AllRecipes = useSelector((state) => state.Recipes);
-    const [setOrder] = useState('')
+    const [order,setOrder] = useState('')
     const [page, setPage] = useState(1);
     const [recipesPage] = useState(9);
     

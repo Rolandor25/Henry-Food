@@ -4,9 +4,11 @@
 	height: 50px;
 	padding-left: 18px;
 	border-radius: 0px;
-
+	overflow: hidden;
 	z-index: 10000;
 	top: 0px;
+	/* width: 100%;
+	position: fixed; */
 }
 #menu ul, #menu li {
 	margin: 0 auto;
