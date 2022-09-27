@@ -2,12 +2,14 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import { connect, useDispatch , useSelector} from "react-redux";
 import RecipeCard from "../RecipeCard/RecipeCard";
-import '../../layout.css'
+import '../../layout.css';
 import Paged from '../Paged/Paged';
 import SearchBar from '../SearchBar/SearchBar';
-
 import { getRecipeList , dietTypeFilter, aplhabeticalSort, scoreSort } from '../../redux/actions';
 
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+// HOME PAGE - LISTA DE RECCETAS
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
 
 export function ListRecipe(){
 
@@ -16,55 +18,56 @@ export function ListRecipe(){
     const [order,setOrder] = useState('')
     const [page, setPage] = useState(1);
     const [recipesPage] = useState(9);
-    
     const quantityRecipesPage = page * recipesPage;
     const firstRecipePage = quantityRecipesPage - recipesPage;
     const showRecipesPage = AllRecipes.slice(firstRecipePage, quantityRecipesPage);
-    
-    const paged = function(pageNumber) {
-        setPage(pageNumber)
-    };
-
+    const paged = function(pageNumber) {setPage(pageNumber)};
     const dispatch = useDispatch();
 
-    //DESPACHO LA ACCION DE BUSCAR TODAS LAS RECETS
-    useEffect(() => {
-        dispatch(getRecipeList())
-    }, [dispatch]);
+    //******************** BLOQUE DE ACCIONES ********************/
 
-    function handleClick(e) {
-        e.preventDefault();
-        dispatch(getRecipeList());
-        setPage(1);
-    }
+        //DESPACHO LA ACCION DE BUSCAR TODAS LAS RECETS
+        useEffect(() => {
+            dispatch(getRecipeList())
+        }, [dispatch]);
 
-    function handleDietTypeFilter(e) {
-        e.preventDefault();
-        dispatch(dietTypeFilter(e.target.value))
-        setPage(1);
-    }
+        //DESPACHO LA ACCIONES ONCLICK
+        function handleClick(e) {
+            e.preventDefault();
+            dispatch(getRecipeList());
+            setPage(1);
+        }
 
-    function handleAlphabeticalSort(e) {
-        e.preventDefault();                
-        dispatch(aplhabeticalSort(e.target.value))
-        setPage(1);
-        setOrder(`Order ${e.target.value}`);
-    }
-    
-    function handleScoreSort(e) {
-        e.preventDefault();                
-        dispatch(scoreSort(e.target.value));
-        setPage(1);
-        setOrder(`Order ${e.target.value}`);
-    }    
+        //DESPACHO LA ACCIONES DEL FILTRO LISTBOX DIETAS
+        function handleDietTypeFilter(e) {
+            e.preventDefault();
+            dispatch(dietTypeFilter(e.target.value))
+            setPage(1);
+        }
 
-    //RENDERIZO MARCO CONTENEDOR DE LAS CARDS DE LAS RECETAS
+        //DESPACHO LA ACCIONES DEL FILTRO LISTBOX DE ORDEN ALFABETICO
+        function handleAlphabeticalSort(e) {
+            e.preventDefault();                
+            dispatch(aplhabeticalSort(e.target.value))
+            setPage(1);
+            setOrder(`Order ${e.target.value}`);
+        }
+        
+        //DESPACHO LA ACCIONES DEL FILTRO LISTBOX DE HEALTH SCORE
+        function handleScoreSort(e) {
+            e.preventDefault();                
+            dispatch(scoreSort(e.target.value));
+            setPage(1);
+            setOrder(`Order ${e.target.value}`);
+        }    
+
+    //******************** RENDERIZADO DEL HOME ********************/
     return(
         <div className="conteiner">
-
+            {/* //HEADER >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <header className='header'>
             </header>
-
+            {/* //OPTION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <div className="select">
                 <label className="filters"><strong>Sort:</strong></label>
                 <select className="select" name="alphabetical" onChange={e => handleAlphabeticalSort(e)}>
@@ -96,16 +99,13 @@ export function ListRecipe(){
                     <option value="whole 30">Whole30</option>
                 </select>
                 <button className="refreshButton" onClick={handleClick}>Refresh</button>
-
+                //CARGO COMPONENTE DEL SEARCHBAR
                 <SearchBar/>
-
             </div>
-
-
+            {/* //BODY >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <main className="conteiner__main">
                 {/*<!-- Left sidebar -->*/}
                 <aside className="conteiner__left"></aside>
-
                 {/*<!-- Main content -->*/}
                 <article></article>
                     <div className="conteiner__middle">
@@ -118,11 +118,12 @@ export function ListRecipe(){
                             </div>)
                         }
                     </div> 
-
                 { /*<!-- Right sidebar -->*/}
                 <aside className="conteiner__right"></aside>
             </main>
+            {/* //COMPONENTE DE PAGINADO >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <Paged recipesPage={recipesPage} AllRecipes={AllRecipes.length} paged={paged}/>
+            {/* //FOOTER >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
             <footer>
                 <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>
             </footer>

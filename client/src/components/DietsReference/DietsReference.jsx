@@ -1,13 +1,16 @@
 import '../../layout.css'
 
-export default function DietsReference (){
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+// REFERECIA DE DIETAS Y DATOS DE SALUD
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
 
+export default function DietsReference (){
   return(
     <div className="conteiner">
 
       <header className='header'>
       </header>      
-      
+    
       <main className="conteiner__main">
         {/*<!-- Left sidebar -->*/}
         <aside className="conteiner__left"></aside>

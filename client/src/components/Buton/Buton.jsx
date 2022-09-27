@@ -2,6 +2,10 @@ import React from "react"
 import'./Button.css';
 import { Link } from "react-router-dom";
 
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+// LANDING PAGE
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+
 export default function IniButon() {
     return(
         <React.Fragment>  

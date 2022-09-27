@@ -2,6 +2,10 @@ import React from 'react';
 import './NavBar.css';
 import {NavLink} from 'react-router-dom'
 
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+// MENU DE OPCIONES
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+
 export default function Nav(){
     return (
         <React.Fragment>

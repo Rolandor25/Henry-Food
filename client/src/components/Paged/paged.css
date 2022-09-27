@@ -1,7 +1,7 @@
 .pages {
     display: flex;
 	height: 20px;
-    list-style-type:none;
+    /* list-style-type:none; */
     justify-content: center;
 	padding: 4px;
     margin: 0px;

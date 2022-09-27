@@ -5,6 +5,11 @@ import { createRecipe } from "../../redux/actions";
 import { useDispatch } from 'react-redux'
 import '../../layout.css'
 
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+// FORMULARIO DE CREACION DE RECCETA
+//MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
+
+//VALIDACIONES DEL FORMULARIO
 function FormErr(input) {
     let errors = {};
     if (!input.name) errors.name = 'Please enter a recipe name';
@@ -12,7 +17,7 @@ function FormErr(input) {
     if (input.hs < 1 || input.hs > 100) errors.hs = 'The health score range is between 1 and 1000';
     if (!input.steps.length) errors.steps = 'Please add at least one preparation step to the recipe';
     if (input.diets.length>1) errors.diets = 'Please select at least one diet';
-    if (!input.image) errors.image = 'Please indicate the url of the image';
+    if (!/(^http[s]?:\/{2})|(^www)|(^\/{1,2})/.test(input.image)) errors.image = 'Please indicate a valid url of the image';
     return errors;
 };
 
@@ -85,11 +90,12 @@ export default function CreateRecipe(){
        else {
             dispatch(createRecipe(input))
             history.push('/recipes')
-            //alert('New recipe added successfully!')
+            alert('New recipe added successfully!')
             setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar      
         }
     }
 
+     // LIMPIO ORMULARIO EN EL RESET
     function handlereset(event){
         setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar
     }
@@ -157,7 +163,12 @@ export default function CreateRecipe(){
 
                                 <tr>
                                     <td align="right"><strong>URL Reference Image:</strong></td>
-                                    <td><input type={'text'} name={'image'}  className='conteiner_input' value={input.image} onChange={(event)=>handleChange(event)}/></td>
+                                    <td><input type={'text'} name={'image'}  className='conteiner_input' value={input.image} onChange={(event)=>handleChange(event)}/>
+                                    <div></div>
+                                    {errors.image && (
+                                        <span className="errors">{errors.image}</span>
+                                    )}    
+                                    </td>
                                 </tr>
 
                                 <tr className="checkList">
@@ -195,5 +206,4 @@ export default function CreateRecipe(){
         </div> 
 
     )
-
 }
