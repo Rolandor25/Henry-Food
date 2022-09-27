@@ -15,7 +15,7 @@ export default function DietsReference (){
         {/*<!-- Main content -->*/}
         <article>
             <div className="conteiner__middle_h">
-                <div className="content_card">
+                <div className="content_card_d">
                     <h1 className='conteiner_tittleform' align="center">Diets And Health Recomendation</h1>
                     <div className='conteiner__colLft'>
                         <h2><strong>Diet Definitions </strong> </h2>
