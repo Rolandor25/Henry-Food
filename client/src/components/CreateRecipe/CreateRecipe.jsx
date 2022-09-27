@@ -1,4 +1,5 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useState } from 'react'
 import { createRecipe } from "../../redux/actions";
 import { useDispatch } from 'react-redux'
@@ -10,7 +11,7 @@ function FormErr(input) {
     if (!input.resume) errors.resume = 'Please enter recipe description';
     if (input.hs < 1 || input.hs > 100) errors.hs = 'The health score range is between 1 and 1000';
     if (!input.steps.length) errors.steps = 'Please add at least one preparation step to the recipe';
-    if (!input.diets.length) errors.diets = 'Please select at least one diet';
+    if (input.diets.length>1) errors.diets = 'Please select at least one diet';
     if (!input.image) errors.image = 'Please indicate the url of the image';
     return errors;
 };
@@ -23,6 +24,7 @@ export default function CreateRecipe(){
     let listed=[];
     const checkList  = ['dairy free' , 'gluten free' , 'ketogenic' , 'lacto ovo vegetarian' , 'lacto vegetarian' , 'low fodmap' , 'ovo vegetarian' , 'paleolithic' , 'pescetarian' , 'primal' , 'vegan' , 'vegetarian' , 'whole 30']; 
     const dispatch = useDispatch();
+    const history=useHistory
 
     //MANEJADOR DE EVENTOS DE CAMBIO EN CAMPOS IMPUTS
     let handleChange=(event)=>{
@@ -82,6 +84,7 @@ export default function CreateRecipe(){
            alert("you must complete the required fields to be able to save the recipe");}
        else {
             dispatch(createRecipe(input))
+            history.push('/recipes')
             //alert('New recipe added successfully!')
             setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar      
         }
@@ -93,27 +96,27 @@ export default function CreateRecipe(){
 
     //FORMULARIO
     return(
-        <div className="container">
+        <div className="conteiner">
             <header className='header'>
             </header>
 
-            <main className="container__main">
+            <main className="conteiner__main">
                 {/*<!-- Left sidebar -->*/}
-                <aside className="container__left">...</aside>
+                <aside className="conteiner__left">...</aside>
         
                 {/*<!-- Main content -->*/}
-                <article className="container__middle_f">
+                <article className="conteiner__middle_f">
                     
                     <React.Fragment>
                         <form onSubmit={event=>handlesubmit(event)}>
-                            <h1 className='container_tittleform' align="center">Share Your Recipes And Bee Part of Recipedia Community</h1> 
+                            <h1 className='conteiner_tittleform' align="center">Share Your Recipes And Bee Part of Recipedia Community</h1> 
                             <h2 align="center"> CREATE RECIPE</h2> 
                             <br/>
 
                             <table id="table1" cellSpacing="5px" cellPadding="5%" align="center"> 
                                 <tr>
                                     <td align="right"><strong>Recipe Name:</strong></td>
-                                    <td><input type={'text'} name={'name'} className='container_input' value={input.name} onChange={(event)=>handleChange(event)}/>
+                                    <td><input type={'text'} name={'name'} className='conteiner_input' value={input.name} onChange={(event)=>handleChange(event)}/>
                                     <div></div>
                                     {errors.name && (
                                         <span className="errors">{errors.name}</span>
@@ -123,7 +126,7 @@ export default function CreateRecipe(){
 
                                 <tr>
                                     <td align="right"><strong>Resume: </strong></td>
-                                    <td><input type={'text'} name={'resume'} className='container_input' value={input.resume} onChange={(event)=>handleChange(event)}></input>
+                                    <td><textarea type={'text'} name={'resume'} className='conteiner_input' rows="4" cols="52"value={input.resume} onChange={(event)=>handleChange(event)}></textarea>
                                     <div></div>
                                     {errors.resume && (
                                         <span className="errors">{errors.resume}</span>
@@ -132,8 +135,8 @@ export default function CreateRecipe(){
                                 </tr>
 
                                 <tr>
-                                    <td align="right"><strong>Heatlth Score:</strong> </td>
-                                    <td><input type={'number'} name={'hs'}  className='container_inputnum' value={input.hs} onChange={(event)=>handleChange(event)}/>
+                                    <td align="right"><strong>healthlth Score:</strong> </td>
+                                    <td><input type={'number'} name={'hs'}  className='conteiner_inputnum' value={input.hs} onChange={(event)=>handleChange(event)}/>
                                     <div></div>
                                     {errors.hs && (
                                         <span className="errors">{errors.hs}</span>
@@ -144,7 +147,7 @@ export default function CreateRecipe(){
                                 <tr>
                                     <td align="right"><strong>Step by Step:</strong></td>
                                     <td>
-                                    <textarea id="inputsteep" type={'text'} rows="8" cols="52" name={'steps'} className='container_inputstp' onChange={(event)=>handleSteps(event)}/>
+                                    <textarea id="inputsteep" type={'text'} rows="8" cols="52" name={'steps'} className='conteiner_inputstp' onChange={(event)=>handleSteps(event)}/>
                                     <div></div>
                                     {errors.steps && (
                                         <span className="errors">{errors.steps}</span>
@@ -153,8 +156,8 @@ export default function CreateRecipe(){
                                 </tr>
 
                                 <tr>
-                                    <td align="right"><strong>Reference Image:</strong></td>
-                                    <td><input type={'text'} name={'image'}  className='container_input' value={input.image} onChange={(event)=>handleChange(event)}/></td>
+                                    <td align="right"><strong>URL Reference Image:</strong></td>
+                                    <td><input type={'text'} name={'image'}  className='conteiner_input' value={input.image} onChange={(event)=>handleChange(event)}/></td>
                                 </tr>
 
                                 <tr className="checkList">
@@ -162,7 +165,7 @@ export default function CreateRecipe(){
                                     <td className="diets-list">
                                     {checkList.map((item, index) => (
                                         <div key={index}>
-                                        <input type="checkbox" value={item} onChange={handleCheck} />{item.charAt(0).toUpperCase() + item.slice(1)}
+                                        <input className="chkcolor" type="checkbox" value={item} onChange={handleCheck} />{item.charAt(0).toUpperCase() + item.slice(1)}
                                         </div>
                                     ))}
                                     <div></div>
@@ -175,7 +178,7 @@ export default function CreateRecipe(){
                                 <tr>
                                     <td align="right" className="title"><strong>Form Options:</strong></td>
                                     <td><input type={'submit'} className='refreshButton' value={'Create'}/>                                                             
-                                    <input type={'reset'} className='refreshButton' value={'Reset'} onChange={handlereset}/></td>                          
+                                    <input type={'reset'} className='refreshButton' value={'Reset'} onClick={handlereset}/></td>                          
                                 </tr> 
                             </table>
                         </form>
@@ -184,7 +187,7 @@ export default function CreateRecipe(){
                 </article>
         
                 {/*<!-- Right sidebar -->*/}
-                <nav className="container__right"></nav>
+                <nav className="conteiner__right"></nav>
             </main>
             <footer>
                 <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>

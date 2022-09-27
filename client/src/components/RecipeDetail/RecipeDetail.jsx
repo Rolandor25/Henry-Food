@@ -28,32 +28,32 @@ const FullRecipe = useSelector(state => state.detail);
   }
 
   return(
-    <div className="container">
+    <div className="conteiner">
 
       <header className='header'>
       </header>      
       
-      <main className="container__main">
+      <main className="conteiner__main">
         {/*<!-- Left sidebar -->*/}
-        <aside className="container__left"></aside>
+        <aside className="conteiner__left"></aside>
 
         {/*<!-- Main content -->*/}
         <article></article>
-          <div className="container__middle_h">
+          <div className="conteiner__middle_h">
               {
                 FullRecipe ? (
-                  <div className="content_card">
+                  <div className="content_card_d">
                     <h1>{FullRecipe.name}</h1>
 
-                    <div className='container__colLft'>
-                      <div><img src={imgtoshow} alt="" height={400} width={400}/></div>
+                    <div className='conteiner__colLft'>
+                      <img src={imgtoshow} alt=""/>
                       <div><strong>Health Score: </strong>{FullRecipe.hs} </div>
-                      <h4> Diets Recomended:</h4>
+                      <h4> Suggested for these diets:</h4>
                        <div> {dietstring}</div>
                     </div>
                     
-                    <div className='container__colRgt'>
-                      <div>{FullRecipe.resume}</div>
+                    <div className='conteiner__colRgt'>
+                      <div className="detjust">{FullRecipe.resume?.replace(/<[^>]*>/g, '')}</div>
                       <br/>
                       <div><strong>Steps to Preper:</strong></div>
                       <ol>
@@ -71,7 +71,7 @@ const FullRecipe = useSelector(state => state.detail);
           </div> 
         { /*<!-- Right sidebar -->*/}
 
-        <aside className="container__right"></aside>
+        <aside className="conteiner__right"></aside>
       </main>
       <footer>
         <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>

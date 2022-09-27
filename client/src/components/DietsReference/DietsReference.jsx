@@ -3,28 +3,28 @@ import '../../layout.css'
 export default function DietsReference (){
 
   return(
-    <div className="container">
+    <div className="conteiner">
 
       <header className='header'>
       </header>      
       
-      <main className="container__main">
+      <main className="conteiner__main">
         {/*<!-- Left sidebar -->*/}
-        <aside className="container__left"></aside>
+        <aside className="conteiner__left"></aside>
 
         {/*<!-- Main content -->*/}
         <article>
-            <div className="container__middle_h">
+            <div className="conteiner__middle_h">
                 <div className="content_card">
-                    <h1 className='container_tittleform' align="center">Diets And Health Recomendation</h1>
-                    <div className='container__colLft'>
+                    <h1 className='conteiner_tittleform' align="center">Diets And Health Recomendation</h1>
+                    <div className='conteiner__colLft'>
                         <h2><strong>Diet Definitions </strong> </h2>
                         <p>Below we show the meaning and description of the different types of diets.</p>
 
                         <div><img src='https://spoonacular.com/application/frontend/images/academy/diet-infographic.png' alt="" height={300} width={450}/></div>
 
                         <p><strong>Gluten Free</strong></p>
-                        <p>Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).</p>
+                        <p>Eliminating gluten means avoiding whealth, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated).</p>
                         <p><strong>Ketogenic</strong></p>
                         <p>The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not. The formula we use is 55-80% fat content, 15-35% protein content, and under 10% of carbohydrates.</p>
                         <p><strong>Vegetarian</strong></p>
@@ -42,13 +42,13 @@ export default function DietsReference (){
                         <p><strong>Primal</strong></p>
                         <p>Very similar to Paleo, except dairy is allowed - think raw and full fat milk, butter, ghee, etc.</p>
                         <p><strong>Low FODMAP</strong></p>
-                        <p>FODMAP stands for "fermentable oligo-, di-, mono-saccharides and polyols". Our ontology knows which foods are considered high in these types of carbohydrates (e.g. legumes, wheat, and dairy products)</p>
+                        <p>FODMAP stands for "fermentable oligo-, di-, mono-saccharides and polyols". Our ontology knows which foods are considered high in these types of carbohydrates (e.g. legumes, whealth, and dairy products)</p>
                         <p><strong>Whole30</strong></p>
                         <p>Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds. Ingredients not allowed include added sweeteners (natural and artificial, except small amounts of fruit juice), dairy (except clarified butter or ghee), alcohol, grains, legumes (except green beans, sugar snap peas, and snow peas), and food additives, such as carrageenan, MSG, and sulfites.</p>
     
                     </div>
                     
-                    <div className='container__colRgt'>
+                    <div className='conteiner__colRgt'>
                         <h1>Healthy diet</h1>
                         <h2>Key facts</h2>
                         <ul type="disc">
@@ -66,7 +66,7 @@ export default function DietsReference (){
                         <h3>For adults</h3>
                         <p>A healthy diet includes the following:</p>
                         <ul type="disc">
-                        <li>Fruit, vegetables, legumes (e.g. lentils and beans), nuts and whole grains (e.g. unprocessed maize, millet, oats, wheat and brown rice).</li>
+                        <li>Fruit, vegetables, legumes (e.g. lentils and beans), nuts and whole grains (e.g. unprocessed maize, millet, oats, whealth and brown rice).</li>
                         <li>At least 400&nbsp;g (i.e. five portions) of fruit and vegetables per day&nbsp;<em>(2)</em>, excluding potatoes, sweet potatoes, cassava and other starchy roots.</li>
                         <li>Less than 10% of total energy intake from free sugars&nbsp;<em>(2, 7)</em>, which is equivalent to 50&nbsp;g (or about 12 level teaspoons) for a person of healthy body weight consuming about 2000 calories per day, but ideally is less than 5% of total energy intake for additional health benefits&nbsp;<em>(7)</em>. Free sugars are all sugars added to foods or drinks by the manufacturer, cook or consumer, as well as sugars naturally present in honey, syrups, fruit juices and fruit juice concentrates.</li>
                         <li>Less than 30% of total energy intake from fats&nbsp;<em>(1, 2, 3)</em>. Unsaturated fats (found in fish, avocado and nuts, and in sunflower, soybean, canola and olive oils) are preferable to saturated fats (found in fatty meat, butter, palm and coconut oil, cream, cheese, ghee and lard) and&nbsp;<em>trans-</em>fats of all kinds, including both industrially-produced&nbsp;<em>trans-</em>fats (found in baked and fried foods, and pre-packaged snacks and foods, such as frozen pizza, pies, cookies, biscuits, wafers, and cooking oils and spreads) and ruminant&nbsp;<em>trans-</em>fats (found in meat and dairy foods from ruminant animals, such as cows, sheep, goats and camels). It is suggested that the intake of saturated fats be reduced to less than 10% of total energy intake and&nbsp;<em>trans-</em>fats to less than 1% of total energy intake&nbsp;<em>(5)</em>. In particular, industrially-produced&nbsp;<em>trans</em>-fats are not part of a healthy diet and should be avoided&nbsp;<em>(4, 6)</em>.</li>
@@ -131,7 +131,7 @@ export default function DietsReference (){
         </article>
         { /*<!-- Right sidebar -->*/}
 
-        <aside className="container__right"></aside>
+        <aside className="conteiner__right"></aside>
       </main>
       <footer>
         <p>© 2022 Rolandor25 - PI Henry Food Single Page Aplication</p>

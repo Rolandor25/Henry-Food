@@ -60,7 +60,7 @@ export function ListRecipe(){
 
     //RENDERIZO MARCO CONTENEDOR DE LAS CARDS DE LAS RECETAS
     return(
-        <div className="container">
+        <div className="conteiner">
 
             <header className='header'>
             </header>
@@ -72,6 +72,7 @@ export function ListRecipe(){
                     <option value="atoz">A to Z</option>
                     <option value="ztoa">Z to A</option>
                 </select>
+                <label className="filters"><strong>Healt Score:</strong></label>
                 <select className="select" name="numerical" onChange={e => handleScoreSort(e)}>
                     <option defaultValue={'Score'}></option>
                     <option value="asc">From Min to Max</option>
@@ -101,13 +102,13 @@ export function ListRecipe(){
             </div>
 
 
-            <main className="container__main">
+            <main className="conteiner__main">
                 {/*<!-- Left sidebar -->*/}
-                <aside className="container__left"></aside>
+                <aside className="conteiner__left"></aside>
 
                 {/*<!-- Main content -->*/}
                 <article></article>
-                    <div className="container__middle">
+                    <div className="conteiner__middle">
                         {
                             //VALIDO QUE EXISTAN RECCETAS QUE MOSTRAR Y MAPEO EL ARREGLO RESULTANTE
                             showRecipesPage  && showRecipesPage.map(r=><div key={prevId ++}>
@@ -119,7 +120,7 @@ export function ListRecipe(){
                     </div> 
 
                 { /*<!-- Right sidebar -->*/}
-                <aside className="container__right"></aside>
+                <aside className="conteiner__right"></aside>
             </main>
             <Paged recipesPage={recipesPage} AllRecipes={AllRecipes.length} paged={paged}/>
             <footer>

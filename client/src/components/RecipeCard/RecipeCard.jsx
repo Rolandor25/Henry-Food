@@ -13,19 +13,11 @@ export default function RecipeCard({id,image,name,hs,diet}){
   return(
     <div > 
       <div className="content_card">
-        <div><img src={imgtoshow} alt="" height={200} width={250}/></div>
+        <img src={imgtoshow} alt="" />
         <Link to={`/recipes/${id}`}> <h3>{name}</h3> </Link>
-        <div><strong>Heath Score: </strong>{hs}</div>
-        <div><strong>Diets Recomensation:</strong></div>
-        <div> {diet.toString()}
-          {/* {
-            diet?.map(d => {
-              return (
-                <div key={prevId++}><strong>{d}</strong></div>
-              )
-            })
-          }   */}
-        </div>
+        <p><strong>Health Score: </strong>{hs}%</p>
+        <p><strong>Suggested for these diets:</strong></p>
+        <p> {diet.toString()}</p>
       </div>    
     </div>
   )

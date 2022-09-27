@@ -34,7 +34,7 @@
       "baseline": 32,
       "textAlign": "left",
       "verticalAlign": "top",
-      "containerId": null,
+      "conteinerId": null,
       "originalText": "FUNCIONES:"
     },
     {
@@ -68,7 +68,7 @@
       "baseline": 216,
       "textAlign": "left",
       "verticalAlign": "top",
-      "containerId": null,
+      "conteinerId": null,
       "originalText": "LISTRECIPIES: MUESTRA TODAS LAS RECETAS / O LAS DE UNA DIETA ESPESIFICA\n\nSHOWRECIPIEBYID: MUESTRA UNA RECETA ESPESIFICA\n\nCREATERECIPIE: CREA UNA NUEVA RECETA EN LA DB\n\nFINDRECIPIES: MUESTRA LAS RECETAS QUE COINCIDAN CON EL PATRON DE BUSQUEDA\n\nsORTRECIPIES: ORDENA LA LISTA DE RESULTADOS DE RECETAS"
     },
     {
