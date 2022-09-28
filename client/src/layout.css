@@ -1,4 +1,7 @@
 
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE CABECERA */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
 .header{
     background-image: url(./banne2.png);
 	height:220px;
@@ -8,6 +11,52 @@
     background-size:cover 
 }
 
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE ELEMENTOS DE FILTRADO + BOTON DE ACCION*/
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+
+/* AJUSTE DE BAJA RESOLUCION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 576Px) {
+    .filtercontainer {
+        background: rgb(255, 255, 255,0.75);
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        height: fit-content;
+        padding: 1% 5%;
+        align-items: center;
+        justify-content:center;
+        font-style: italic;
+        font-weight: 700;
+    }
+}
+/* AJUSTE DE RESOLUCION MEDIA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 768px) {
+    .filtercontainer {
+        background: rgb(255, 255, 255,0.75);
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        height: fit-content;
+        padding: 8px 25px;
+        align-items: center;
+        justify-content:center;
+        font-style: italic;
+        font-weight: 700;
+    }
+}
+/* AJUSTE DE RESOLUCION MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 1200px) {
+    .filtercontainer {
+        background: rgb(255, 255, 255,0.75);
+        display:flex;
+        flex-direction: row;
+        height: fit-content;
+        padding: 8px 25px;
+        align-items: center;
+        justify-content:center;
+        font-style: italic;
+        font-weight: 700;
+    }
+}
 .filters {
     font-weight: 500;    
     padding-left:  10px;
@@ -16,7 +65,6 @@
     align-items: center;
     padding: 8px 25px;
 }
-
 .select {
     background: rgb(255, 255, 255,0.75);
     display:flex;
@@ -28,7 +76,7 @@
     font-style: italic;
     font-weight: 700;
 }
-
+/* <<<<< BOTON DE ACCION >>>>> */
 .refreshButton {
     color: rgb(5, 0, 0);
     background-color: #FCCC5D;
@@ -42,21 +90,21 @@
     border-width: 1px;
     cursor: pointer;
 }
-
 .refreshButton:hover {
     color:#ffffff;
     background-color: rgb(96, 136, 146);
 }
 
-.conteiner {
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE LAYOUT PRINCIPAL */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+.conteiner {/* FONDO */
     display: flex;
     flex-direction: column;
     background: rgb(244,241,236);
     background: linear-gradient(180deg, rgba(244,241,236,1) 0%, rgba(229,198,167,1) 100%);
 }
-
-.conteiner__main {
-    /* Take the remaining height */
+.conteiner__main {/* GRID */
     display: flex;
     flex-direction: row;
     flex-grow: 1;
@@ -64,32 +112,87 @@
     padding: 1%;
 }
 
-.conteiner__left {
-    width: 10%;
+/* AJUSTE DE BAJA RESOLUCION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 576px) {
+    .conteiner__left {/* LATERAL IZQUIERDO */
+        width: 1%;
+    }
+    .conteiner__middle {/* CUERPO PRINCIPAL EN RESOLUCION BAJA*/
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        background: rgba(200, 200, 200, 0.7);
+        flex-grow: 1;
+        top: 50%;
+        left: 50%;
+        justify-items: stretch;
+        align-items: stretch;
+        column-gap: 1%;
+        row-gap: 1%;
+        padding: 1%;
+        padding-left: 2%;
+        margin-left: 2%;
+    }
+    .conteiner__right {/* LATERAL DERECHO */
+        width: 1%;
+    }
 }
 
-.conteiner__middle {
-    /* Take the remaining width */
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: minmax(100px, auto);
-    background: rgba(200, 200, 200, 0.7);
-    flex-grow: 1;
-    top: 50%;
-    left: 50%;
-    justify-items: stretch;
-    align-items: stretch;
-    column-gap: 1%;
-    row-gap: 1%;
-    padding: 1%;
-    padding-left: 2%;
-    margin-left: 2%;
+/* AJUSTE DE RESOLUCION MEDIA >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 768px) {
+    .conteiner__left {/* LATERAL IZQUIERDO */
+        width: 5%;
+    }
+    .conteiner__middle {/* CUERPO PRINCIPAL EN RESOUCION MEDIA */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        background: rgba(200, 200, 200, 0.7);
+        flex-grow: 1;
+        top: 50%;
+        left: 50%;
+        justify-items: stretch;
+        align-items: stretch;
+        column-gap: 1%;
+        row-gap: 1%;
+        padding: 1%;
+        padding-left: 2%;
+        margin-left: 2%;
+    }
+    .conteiner__right {/* LATERAL DERECHO */
+        width: 5%;
+    }
 }
 
-.conteiner__right {
-    width: 10%;
+/* AJUSTE DE ALTA RESOLUCION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 1200px) {
+    .conteiner__left {/* LATERAL IZQUIERDO */
+        width: 10%;
+    }
+    .conteiner__middle {/* CUERPO PRINCIPAL EN RESOLUCION GRANDE*/
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(100px, auto);
+        background: rgba(200, 200, 200, 0.7);
+        flex-grow: 1;
+        top: 50%;
+        left: 50%;
+        justify-items: stretch;
+        align-items: stretch;
+        column-gap: 1%;
+        row-gap: 1%;
+        padding: 1%;
+        padding-left: 2%;
+        margin-left: 2%;
+    }
+    .conteiner__right {/* LATERAL DERECHO */
+        width: 10%;
+    }
 }
 
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE LAYOUT CARD'S DE RECETAS */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
 .content_card {
     background-color: rgb(255, 255, 255,0.80);
     border-radius: 20px;
@@ -101,19 +204,20 @@
     padding-top: 3%;
     overflow:auto;
 }
-
 .content_card img{
     height:55%;
     width: 85%;
     border-radius: 5px;
     text-align: center;
 }
-
 .content_card p{
     padding-left: 8%;
     text-align: left
 }
 
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE LAYOUT CARD'S DE DETALLE DE RECETA */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
 .content_card_d {
     background-color: rgb(255, 255, 255,0.80);
     width: 100% ;
@@ -124,29 +228,10 @@
     box-sizing: border-box;
     overflow:auto;
 }
-
-.detjust{
+.detjust{/* TEXTO DEL RESUUMEN DE LA RECETA */
     text-align: justify;
-}
-
-/* Container for skill bars */
-.heathbar_container {
-    box-sizing:border-box;
-    padding-top: 1px; /* Add top padding */
-    height: 20px;
-    width: 90%; /* Full width */
-    background-color: #ddd; /* Grey background */
-}
-  
-.heathbar_skills {
-    text-align: right; /* Right-align text */
-    height: inherit;
-    color: white; /* White text color */
-    background-color: #2196F3;
-    width: 20%;
-}
-  
-.conteiner__middle_h {
+} 
+.conteiner__middle_h {/* CUERPO PRINCIPAL DE DETALLE */
     display: flex;
     justify-content: space-around;
     flex-grow: 1;
@@ -157,8 +242,7 @@
     top: 50%;
     left: 50%;
 }
-
-.conteiner__colLft{ 
+.conteiner__colLft{ /* LATERAL IZQUIERDO (IMG + HEALTSCORE + DIETS) */
     width: 30%; 
     display: flexbox;
     margin:1px; 
@@ -166,16 +250,15 @@
     background-color:none; 
     text-align: justify;
 } 
+    .conteiner__colLft img{/* AJUSTE DE TAMANO DE IMAGEN */
+        height:60%;
+        width: 100%;
+        justify-items: center;
+        border-radius: 5px;
+        text-align: center;
+    }
 
-.conteiner__colLft img{
-    height:60%;
-    width: 100%;
-    justify-items: center;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.conteiner__colRgt{ 
+.conteiner__colRgt{ /* LATERAL DERECHO (RESUMEN + STEPS */
     width: 60%; 
     padding-right: 50px;
     display: flexbox;
@@ -186,6 +269,9 @@
     text-align: left;
 } 
 
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* ESTILOS DE LAYOUT FORMULARO DE CREACION DE RECETA */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
 .conteiner__middle_f {
     display: flex;
     justify-content: space-around;
@@ -197,33 +283,35 @@
     top: 50%;
     left: 50%;
 }
-
-.conteiner_tittleform{
+.conteiner_tittleform{/* TITULO DEL FORMULARIO */
     font-family: "AR BERKLEY", cursive, sans-serif;
     font-weight: 700;
     font-size:xx-large;
 }
-
-.conteiner_input[type="text"] {
+.conteiner_input[type="text"] {/* ESTILO DE INPUTTEXT */
     width: 400px;
 }
-
-.conteiner_inputnum[type="number"] {
+.conteiner_inputnum[type="number"] {/* ESTILO DE INPUT NUMERICO */
     width: 400px;
 }
-.chkcolor{
+.chkcolor{/* ESTILO DEL CHKBOX MARCADO */
     color:  rgb(96, 136, 146);
     accent-color:currentcolor;
 }
-.errors {
+.errors {/* ESTILO MSG DE VALIDACION */
     font-family: sans-serif;    
     color: #e52214;
     font-size: 12px;
     font-weight: 600;
 }
 
-  .conteiner__colLft{ float:left;  }
-  .conteiner__colRgt{ float:right; } 
+.conteiner__colLft{ float:left;  }
+.conteiner__colRgt{ float:right; } 
+
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+/* TEMPLATE DE ESTRUCTURA DE RENDERIZADO DE COMPONENTES */
+/*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
+
 /* <div className="conteiner">
     <header>
         ...

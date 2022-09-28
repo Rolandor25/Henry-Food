@@ -22,8 +22,20 @@
     display: flex;
 }
 
-.searchtext {
-    margin-top: 6px;    
-    margin-bottom: 6px;
-    padding-top: 2px;
+/* AJUSTE DE BAJA RESOLUCION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 576px) {
+    .searchtext {
+        margin-top: 6px;    
+        margin-bottom: 6px;
+        padding-top: 2px;
+        width: 90%;
+    }
+}
+/* AJUSTE DE ALTA RESOLUCION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
+@media (min-width: 768px) {
+    .searchtext {
+        margin-top: 6px;    
+        margin-bottom: 6px;
+        padding-top: 2px;
+    }
 }

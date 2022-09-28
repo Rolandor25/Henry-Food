@@ -68,7 +68,7 @@ export function ListRecipe(){
             <header className='header'>
             </header>
             {/* //OPTION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
-            <div className="select">
+            <div className="filtercontainer">
                 <label className="filters"><strong>Sort:</strong></label>
                 <select className="select" name="alphabetical" onChange={e => handleAlphabeticalSort(e)}>
                     <option defaultValue={'Alphabetical'}></option>
@@ -99,7 +99,7 @@ export function ListRecipe(){
                     <option value="whole 30">Whole30</option>
                 </select>
                 <button className="refreshButton" onClick={handleClick}>Refresh</button>
-                //CARGO COMPONENTE DEL SEARCHBAR
+                {/* //CARGO COMPONENTE DEL SEARCHBAR */}
                 <SearchBar/>
             </div>
             {/* //BODY >>>>>>>>>>>>>>>>>>>>>>>>>>>>> */}
