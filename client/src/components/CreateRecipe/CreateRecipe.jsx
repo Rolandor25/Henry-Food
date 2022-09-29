@@ -16,7 +16,7 @@ function FormErr(input) {
     if (!input.resume) errors.resume = 'Please enter recipe description';
     if (input.hs < 1 || input.hs > 100) errors.hs = 'The health score range is between 1 and 1000';
     if (!input.steps.length) errors.steps = 'Please add at least one preparation step to the recipe';
-    if (input.diets.length>1) errors.diets = 'Please select at least one diet';
+    if (input.diets.length<1) errors.diets = 'Please select at least one diet';
     if (!/(^http[s]?:\/{2})|(^www)|(^\/{1,2})/.test(input.image)) errors.image = 'Please indicate a valid url of the image';
     return errors;
 };
@@ -89,14 +89,15 @@ export default function CreateRecipe(){
            alert("you must complete the required fields to be able to save the recipe");}
        else {
             dispatch(createRecipe(input))
-            history.push('/recipes')
-            alert('New recipe added successfully!')
-            setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar      
+            setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar   
+            alert('New recipe added successfully!') 
+            history.push('/recipes');  
         }
     }
 
      // LIMPIO ORMULARIO EN EL RESET
     function handlereset(event){
+        event.preventDefault()
         setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar
     }
 
