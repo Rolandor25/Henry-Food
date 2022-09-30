@@ -2,7 +2,7 @@
 // REDUCER
 //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
 const initialState={
-    RecipeX:[], //Recetas creadas
+    RecipeX:[], //RECETAS MODIFICADAS
     Recipes:[],
     AllRecipes: [],
     dietTypes: [],
@@ -19,18 +19,12 @@ export default function rootReducer(state=initialState,action){
         case 'RECIPE_DETAIL':
             return{
                 ...state,
-                detail: action.payload
-            }  
-        case 'CREATE_RECIPE':
-            return {
-                ...state,
-            }
+                detail: action.payload,
+            }                                                       
           //**********************************************    
         case 'DIET_TYPE_FILTER':
           const All_Recipes = state.AllRecipes;     
-          console.log(All_Recipes)  
-          const DietFilter = All_Recipes.filter(r => r.diet?.some(d => d.toLowerCase() === action.payload.toLowerCase()))   
-          console.log(DietFilter)          
+          const DietFilter = All_Recipes.filter(r => r.diet?.some(d => d.toLowerCase() === action.payload.toLowerCase()))           
           return {
             ...state,
             Recipes: DietFilter

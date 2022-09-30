@@ -1,8 +1,10 @@
-import React from "react";
 import { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { useSelector ,useDispatch } from "react-redux";
-import { getRecipeDetail } from '../../redux/actions/index'
+import { getRecipeDetail} from '../../redux/actions/index'
+import { deleteRecipe } from '../../redux/actions/index'
 import '../../layout.css'
+
 
 //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWWMWWMWMWMW
 // DETALLE DE RECETA
@@ -14,14 +16,28 @@ export default function RecipeDetail(props){
   let imgtoshow=""
   let dietstring=""
   let Step_Id=0
+  const history=useHistory()
 
-  //SE CAPTURA LA INFORMACION DE LA DIETA CONSULTADA
+  //SE CAPTURA LA INFORMACION DE LA RECETA
   useEffect(() => {
     dispatch(getRecipeDetail(id_detail))
   }, [dispatch, id_detail]);
 
   //ASIGNO A FULLECIPE EL DETALLE PASSSADO POR EL BACK
   const FullRecipe = useSelector(state => state.detail);
+
+  //SE ELIMINA LA RECETA
+  function handleDelete(event){
+    event.preventDefault()
+    dispatch(deleteRecipe(id_detail))
+    alert('The recipe was deleted successfully!') 
+    history.push('/recipes'); 
+  }
+  //SE MODIFICA LA RECETA
+  function handleMod(event){
+    alert('Now you can modify the recipe!') 
+    history.push(`/recipe/create/`,FullRecipe); 
+  }
 
   //VALIDO SI LA RECETA TIENE INFO DE IMAGEN DE REFERENCIA Y EN SU DEFECTO
   //SE MUESTRA UNA IMAGEN POR DEFECTO
@@ -60,12 +76,20 @@ export default function RecipeDetail(props){
                     <div className='conteiner__colLft'>
                       <img src={imgtoshow} alt=""/>
                       <div><strong>Health Score: </strong>{FullRecipe.hs} </div>
-                      <h4> Suggested for these diets:</h4>
-                       <div> {dietstring}</div>
+                      <strong> Suggested for these diets:</strong>
+                      <div> {dietstring}</div>
+                      <br/>
+                      <div>
+                        {
+                          isNaN(FullRecipe.id) && ( 
+                            <div><button id='DelButton' className='refreshDelButton' onClick={handleMod}>Modificar Receta</button>
+                            <button id='DelButton' className='refreshDelButton' onClick={handleDelete}>Eliminar Receta</button></div>
+                          )
+                        }
+                      </div>
                     </div>
-                    {/* // CONTENIDO DE COL IZQUIERDA  */}
+                    {/* // CONTENIDO DE COL DERECHA  */}
                     <div className='conteiner__colRgt'>
-                      {/* <div className="detjust">{FullRecipe.resume?.replace(/<[^>]*>/g, '')}</div> */}
                       <p dangerouslySetInnerHTML={{__html: FullRecipe.resume,}} className="detjust"></p>
                       <br/>
                       <div><strong>Steps to Preper:</strong></div>

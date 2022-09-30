@@ -19,11 +19,26 @@ export function getRecipeDetail(id) {
     }
 }
 
-export function createRecipe(payload){
+export function createRecipe(payload,mod){
     return async function(dispatch) {
+        var response
         try {
-            var response = await axios.post('http://localhost:3001/recipes/', payload);
+            if (mod===false) {
+                response = await axios.post('http://localhost:3001/recipes/', payload);
+            } else { 
+                response = await axios.put('http://localhost:3001/recipes/update/', payload);   
+            }
             return response;
+        } catch (error) {
+            console.log(error)
+        }
+    }        
+}
+
+export function deleteRecipe(id) {
+    return async function (dispatch) {
+        try {
+            return await axios.delete(`http://localhost:3001/recipes/delete/${id}`);
         } catch (error) {
             console.log(error)
         }

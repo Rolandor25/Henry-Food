@@ -94,4 +94,44 @@ router.get('/diets', async (req,res,next)=>{
         next(error)
     }
 })
+
+//<< RUTA#5 >>
+
+//borrar recetas creadas en la base de datos
+router.delete('/recipes/delete/:id', async (req,res,next)=>{
+    const { id } = req.params;
+    try {
+        if (id) {
+            const response=await RoutesFunctions.delrecipebyid(id);
+            if (response!==0) {
+            }else{
+                res.status(400).send('Sorry, the recipe you want to delete was not found.') 
+            }  
+        } else {
+            res.status(400).send('Sorry, the recipe you want to delete was not found.') 
+        }        
+    } catch (error) {
+        res.status(400).send('Sorry, the recipe you want to delete was not found.') 
+    }
+})
+
+//<< RUTA#6 >>
+
+//modifica recetas creadas en la base de datos
+router.put('/recipes/update/', async (req,res,next)=>{
+    try {
+        const response=await RoutesFunctions.modrecipebyid(req.body);
+        if (response!==0) {
+        }else{
+            console.log(error)
+            res.status(400).send(error)
+            // res.status(400).send('Sorry, the recipe you want to update was not found.') 
+        }        
+    } catch (error) {
+        console.log(error)
+        res.status(400).send(error)
+        // res.status(400).send('Sorry, there was an error and the selected recipe could not be updated.') 
+    }
+})
+
 module.exports = router;

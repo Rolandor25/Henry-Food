@@ -15,21 +15,52 @@ function FormErr(input) {
     if (!input.name) errors.name = 'Please enter a recipe name';
     if (!input.resume) errors.resume = 'Please enter recipe description';
     if (input.hs < 1 || input.hs > 100) errors.hs = 'The health score range is between 1 and 1000';
-    if (!input.steps.length) errors.steps = 'Please add at least one preparation step to the recipe';
-    if (input.diets.length<1) errors.diets = 'Please select at least one diet';
+    // if (!input.steps.length) errors.steps = 'Please add at least one preparation step to the recipe';
+    // if (!input.diets.length) errors.diets = 'Please select at least one diet';
     if (!/(^http[s]?:\/{2})|(^www)|(^\/{1,2})/.test(input.image)) errors.image = 'Please indicate a valid url of the image';
     return errors;
 };
 
-export default function CreateRecipe(){
+export default function CreateRecipe(props){
     // SETEO ESTADOS INIIALES DE COMPONENTES DEL FORMULARIO
-    let[input,setInput]=useState({name:'',resume:'',hs:'',steps:[],image:'',diets:[]});
+    //let[input,setInput]=useState({name:'',resume:'',hs:'',steps:[],image:'',diets:[]});
     let[checked, setChecked] = useState([]);
     const [errors, setErrors] = useState({})
     let listed=[];
+    let okMsg;
     const checkList  = ['dairy free' , 'gluten free' , 'ketogenic' , 'lacto ovo vegetarian' , 'lacto vegetarian' , 'low fodmap' , 'ovo vegetarian' , 'paleolithic' , 'pescetarian' , 'primal' , 'vegan' , 'vegetarian' , 'whole 30']; 
     const dispatch = useDispatch();
-    const history=useHistory
+    const history=useHistory()
+
+        //VALIDACION DE MODO DE TRABAJO / CREACION O MODIFICACION
+        const ModRecipe = props.location.state;
+        let MOD=Boolean
+        let paquete
+        let idX,nameX,resumeX,hsX,stepsX,imageX,dietsX
+        if (ModRecipe !==null) {
+            MOD=true
+            okMsg='New recipe updated successfully!'
+            idX=ModRecipe.id;
+            nameX=ModRecipe.name;
+            resumeX=ModRecipe.resume;
+            hsX=ModRecipe.hs;
+            stepsX=ModRecipe.steps
+            imageX=ModRecipe.image;
+            dietsX=ModRecipe.diets     
+            paquete={id:idX,name:nameX,resume:resumeX,hs:hsX,steps:stepsX,image:imageX,diets:dietsX}   
+        } else {
+            MOD=false
+            okMsg='New recipe added successfully!'
+            nameX='';
+            resumeX='';
+            hsX='';
+            stepsX=[];
+            imageX='';
+            dietsX=[]
+            paquete={name:nameX,resume:resumeX,hs:hsX,steps:stepsX,image:imageX,diets:dietsX}  
+        }
+        let[input,setInput]=useState(paquete);
+        let[stepX,setStepX]=useState([]);
 
     //MANEJADOR DE EVENTOS DE CAMBIO EN CAMPOS IMPUTS
     let handleChange=(event)=>{
@@ -43,23 +74,22 @@ export default function CreateRecipe(){
     }
 
     //MANEJADOR DE EVENTOS DE CAMBIO EN LISTA DE PASOS
-    let handleSteps = (event) => {
-        listed =(event.target.value.match(/\n/g)||[]).length;
-        if (event.target.value!=='' && listed>0){
-            setInput({
-                ...input,
-                steps: event.target.value.split('\n')
-            });   
-            console.log(input.steps.length)            
-        }else{
-            setInput({
-                ...input,
-                steps: [event.target.value]
-            });  
-        }
-        const validations = FormErr(input);
-        setErrors(validations)   
-    };
+    // let handleSteps = (event) => {
+    //     listed =(event.target.value.match(/\n/g)||[]).length;
+    //     if (event.target.value!=='' && listed>0){
+    //         setInput({
+    //             ...input,
+    //             steps: event.target.value.split('\n')
+    //         });             
+    //     }else{
+    //         setInput({
+    //             ...input,
+    //             steps: [event.target.value]
+    //         });  
+    //     }
+    //     const validations = FormErr(input);
+    //     setErrors(validations)   
+    // };
 
     //MANEJADOR DE EVENTOS DE SELECCION DE CHECKBOXES
     let handleCheck = (event) => {
@@ -83,14 +113,26 @@ export default function CreateRecipe(){
         event.preventDefault()
         if (input.name === '' && 
            input.resume === '' && 
-           input.hs === '' &&
-           input.steps === '' &&
            input.diets.length<1) {
            alert("you must complete the required fields to be able to save the recipe");}
-       else {
-            dispatch(createRecipe(input))
+       else {    
+            let PAC
+            let stpx
+            let stp=input.steps + '\n'+"A Disfrutar!"
+            let listed=(stp.match(/\n/g)||[]).length;
+            if (listed>0){
+                stpx= stp.split('\n')      
+            }else{
+                stpx= [stp]  
+            }
+            if (MOD) {
+                PAC={id:input.id,name:input.name, resume:input.resume, hs:input.hs, image:input.image, steps:stpx, diets:input.diets}
+            } else {
+                PAC={name:input.name, resume:input.resume, hs:input.hs, image:input.image, steps:stpx, diets:input.diets}
+            }
+            dispatch(createRecipe(PAC,MOD))
             setInput({name:'',resume:'',hs:'',steps:'',image:'',diets:[]})//Limpio el Form despues de guardar   
-            alert('New recipe added successfully!') 
+            alert(okMsg) 
             history.push('/recipes');  
         }
     }
@@ -154,7 +196,8 @@ export default function CreateRecipe(){
                                 <tr>
                                     <td align="right"><strong>Step by Step:</strong></td>
                                     <td>
-                                    <textarea id="inputsteep" type={'text'} rows="8" cols="52" name={'steps'} className='conteiner_inputstp' onChange={(event)=>handleSteps(event)}/>
+                                    {/* <textarea id="inputsteep" type={'text'} rows="8" cols="52" name={'steps'} className='conteiner_inputstp' onChange={(event)=>handleSteps(event)}/> */}
+                                    <textarea id="inputsteep" type={'text'} rows="8" cols="52" name={'steps'} value={input.steps} className='conteiner_inputstp' onChange={(event)=>handleChange(event)}/>
                                     <div></div>
                                     {errors.steps && (
                                         <span className="errors">{errors.steps}</span>

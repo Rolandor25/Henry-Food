@@ -57,6 +57,7 @@
         font-weight: 700;
     }
 }
+
 .filters {
     font-weight: 500;    
     padding-left:  10px;
@@ -90,11 +91,29 @@
     border-width: 1px;
     cursor: pointer;
 }
-.refreshButton:hover {
+.refreshButton :hover {
     color:#ffffff;
     background-color: rgb(96, 136, 146);
 }
-
+.refreshDelButton {
+    color: rgb(5, 0, 0);
+    width: 48%;
+    background-color: #FCCC5D;
+    padding: 8px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    border-color:#7c4324; 
+    border-radius: 3px;
+    border-width: 1px;
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.refreshDelButton:hover {
+    color:#ffffff;
+    background-color: rgb(96, 136, 146);
+}
 /*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/
 /* ESTILOS DE LAYOUT PRINCIPAL */
 /*MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW*/

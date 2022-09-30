@@ -99,10 +99,6 @@ module.exports = {
           return (
             e.step
           )         
-          // return {
-          //   number: e.number,
-          //   step: e.step
-          // }
         })
       }    
       return findrecipe
@@ -134,6 +130,52 @@ module.exports = {
     return (newrecipe)
   }, 
 
+
+  //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
+  // ELIMINO RECCETA POR ID
+  //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
+
+  delrecipebyid: async function (id_recipe) {
+    //VALIDO QUE EL ID RECIBIDO CORRESPONDA A LOS GUARDADOS EN LA DB
+     const recipetodelete=await Recipe.destroy({ 
+        where: { 
+          id: id_recipe
+        } 
+      })
+    return recipetodelete
+  },  
+
+  //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
+  // ACTUALIZO RECCETA POR ID
+  //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
+
+  modrecipebyid: async function ({id,name,resume,hs,steps,image,diets}) {
+    //VALIDO QUE EL ID RECIBIDO CORRESPONDA A LOS GUARDADOS EN LA DB
+     const recipetomod=await Recipe.update({
+      name: name,
+      resume:resume,
+      hs:hs,
+      steps:steps,
+      image:image,
+     },{ 
+        where: { 
+          id: id
+        } 
+      })
+    //ELIMINO RELACIONES ENTRE RECETA Y DIETAS - MIMOYTECH
+    //await recipetomod.setDiets([])  
+    //VINCULO LA RECETA A LA LISTA DE TIPOS DE DIETA A LA QUE ESTA ASOCIADA  
+    // console.log(diets)
+    // for (let k = 0; k < diets.length; k++) {
+    //   var dietofrecipe = await Diet.findOne({
+    //     where: {
+    //       name: diets[k]
+    //     }
+    //   })
+    //   recipetomod.addDiet(dietofrecipe.id)
+    // }
+    return recipetomod
+  },
 
   //MWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMWMW
   // SE GENERA LISTA DE TIPOS DE DIETA PARA FILTROS Y CREACION DE DIETAS
